@@ -16,7 +16,11 @@ Cadeira ministrada pelo professor JEFERSON KENEDY MORAIS VIEIRA, para a turma  0
 O **Financinhas** será uma aplicação online, acessada exclusivamente em aplicação desktop, utilizando elementos de game design para ensinar conceitos de educação financeira de forma lúdica e interativa. A plataforma inclui o quiz "Aventuras do Dinheirinho" como ferramenta de ensino e prática para ajudar os alunos a compreenderem temas financeiros básicos.
 
 ## Tecnologias
-O Projeto será desenvolvido utilizando **Electron**, **React**, **Styled Components** e **Typescript** para o front-end e **Fyrebase** para o back-end.
+- **Electron**
+- **React**
+- **Styled Components**
+- **Typescript**
+- **Fyrebase**
 
 
 
