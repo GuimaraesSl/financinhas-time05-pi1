@@ -22,6 +22,29 @@ O **Financinhas** será uma aplicação online, acessada exclusivamente em aplic
 - **Typescript**
 - **Fyrebase**
 
+## Padrões de Desenvolvimento
+### Padrão de Branch
+O nome das branchs criadas para implementação de toda e qualquer mudança deverá seguir o seguinte padrão:
+Para _Features_: "feature/nome-da-branch-em-inglês"
+para _Bugfix_: "bugfix/nome-da-brach-em-inglês"
+para _refatoração_: "refactor/nome-da-branch-em-inglês"
+
+O nome da branch deve ser o mais descritível possível, informando o que implementa ao produto.
+
+### Padrão de commit
+O padrão de commit que será utilizado será o Cinventional Commits. Para mais detalhes da utilização desse padrão leia este [artigo](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657).
+Em suma, siga os padrões da imagem abaixo:
+
+
+### Padrão de PRs
+Todo commit deverá possuir um título bem descritível seguindo o seguinte padrão:
+Para _Bugfix_: "Fixes - Título em Inglês do Card que Resolve"
+para _Feature_: "Feature - Títuo em Inglês do Card que Resolve"
+
+Ex: Feature - Adding a new prop to the Button component
+    Fixes - Fixing the type in the Button component
+
+
 
 
 
