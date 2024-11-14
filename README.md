@@ -39,14 +39,12 @@ Em suma, siga os padrões da imagem abaixo:
 
 ### Padrão de PRs
 Todo commit deverá possuir um título bem descritível seguindo o seguinte padrão:
+- Para _Bugfix_: "Fixes - Título em Inglês do Card que Resolve"
+- Para _Feature_: "Feature - Títuo em Inglês do Card que Resolve"
 
-Para _Bugfix_: "Fixes - Título em Inglês do Card que Resolve"
-
-para _Feature_: "Feature - Títuo em Inglês do Card que Resolve"
-
-Ex: 
-    - Feature - Adding a new prop to the Button component
-    - Fixes - Fixing the type in the Button component
+Exemplo: 
+- Feature - Adding a new prop to the Button component
+- Fixes - Fixing the type in the Button component
 
 
 
