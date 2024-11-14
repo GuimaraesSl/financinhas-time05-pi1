@@ -32,9 +32,10 @@ para _refatoração_: "refactor/nome-da-branch-em-inglês"
 O nome da branch deve ser o mais descritível possível, informando o que implementa ao produto.
 
 ### Padrão de commit
-O padrão de commit que será utilizado será o Cinventional Commits. Para mais detalhes da utilização desse padrão leia este [artigo](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657).
-Em suma, siga os padrões da imagem abaixo:
+O padrão de commit que será utilizado será o Conventional Commits. Para mais detalhes da utilização desse padrão leia este [artigo](https://medium.com/linkapi-solutions/conventional-commits-pattern-3778d1a1e657).
 
+Em suma, siga os padrões da imagem abaixo:
+![Conventional-Commits](./docs/commits.png)
 
 ### Padrão de PRs
 Todo commit deverá possuir um título bem descritível seguindo o seguinte padrão:
