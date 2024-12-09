@@ -1,0 +1,65 @@
+.containerProfileSelectScreen {
+  display: flex;
+  flex-direction: column;
+  height: 98vh;
+  background-color: #f9f9f9;
+}
+
+.headerProfileSelectScreen{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.logoProfileSelectScreen{
+    width: 350px;
+    height: 71.89px;
+}
+
+.mainProfileSelectScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+  }
+
+.mainProfileSelectScreen h2{
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+.textButton{
+  margin-bottom: 30px;
+}
+
+.ProfileButton {
+  padding: 10px 40px;
+  margin-top: 15px;
+  background-color: #13BB0A;
+  color: #00570A;
+  border: 5px solid #00570A;
+  border-radius: 10px;
+  width: 400px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.ProfileButton:hover {
+  transform: scale(1.05);
+}
+
+.ProfileButton:active {
+  transform: scale(1);
+  box-shadow: none;
+}
+
