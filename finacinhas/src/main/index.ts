@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, session } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
@@ -15,6 +15,15 @@ function createWindow(): void {
       preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
+  })
+
+  const ses = session.fromPartition('persist:name') // Ou use a session padrão
+  ses.webRequest.onHeadersReceived((details, callback) => {
+    // Modificando os cabeçalhos HTTP
+    details.responseHeaders!['Content-Security-Policy'] = [
+      "default-src 'self'; connect-src 'self' https://identitytoolkit.googleapis.com"
+    ]
+    callback({ cancel: false, responseHeaders: details.responseHeaders })
   })
 
   mainWindow.on('ready-to-show', () => {
