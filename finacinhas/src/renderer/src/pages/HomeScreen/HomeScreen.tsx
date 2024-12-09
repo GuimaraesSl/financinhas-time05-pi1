@@ -1,8 +1,7 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
-import logo from '../../src/assets/Logo-Subtitle.svg'
-
-
-import '../styles/HomeScreen.css'
+import logo from '../../assets/Logo-Subtitle.svg'
+import './HomeScreen.style.css'
 
 const HomePage: React.FC = () => {
   const handlePlayClick = () => {
