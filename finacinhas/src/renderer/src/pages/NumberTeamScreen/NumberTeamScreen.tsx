@@ -17,7 +17,7 @@ export const NumberTeamScreen: FC = () => {
   // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/game-setup', { state: { teams: selectedTeams } }) // Passa a quantidade de times via state
+      navigate('/game-setup', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
     }
   }
 
@@ -31,7 +31,7 @@ export const NumberTeamScreen: FC = () => {
       <header className="headerNumberTeamScreen">
         <div className="profileContainerNumberTeamScreen">
           <img src={profileIcon} className="profileNumberTeamScreen" alt="Profile Icon" />
-          <p className="profileNameNumberTeamScreen">Nome do Usuário</p>
+          <p className="profileNameNumberTeamScreen">Prof. Nome do Usuário</p>
         </div>
         <div className="logoContainerNumberTeamScreen">
           <img src={logo} className="logoNumberTeamScreen" alt="logo" />
