@@ -1,0 +1,96 @@
+.containerLoginScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.logoContainerLoginScreen {
+  margin: 0 auto; 
+  width: 350px; 
+  position: absolute; 
+  top: 5vh; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+
+.logoLoginScreen {
+  width: 300px;
+  max-width: 100%;
+}
+
+.formLoginScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 554px;
+  max-width: 90%;
+  padding: 30px;
+  background: #ffffff;
+  border: none; 
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.labelLoginScreen {
+  align-self: flex-start;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+.inputLoginScreen {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 18px;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.buttonLoginScreen {
+  width: 100%;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: #13BB0A;
+  color: #00570A;
+  border: 5px solid #00570A;
+  border-radius: 20px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  transition: transform 0.2s ease-in-out;
+  text-align: center;
+}
+
+.buttonLoginScreen:hover {
+  transform: scale(1.05);
+}
+
+.registerLinkLoginScreen {
+  margin-top: 20px;
+  color: #000000;
+  font-size: 16px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+h2 {
+  margin: 20px 0; 
+  font-size: 32px; 
+  font-family: 'Fredoka One', sans-serif;
+  
+  font-weight: bold;
+  line-height: 39px;
+  color: #1D1D1D;
+}
