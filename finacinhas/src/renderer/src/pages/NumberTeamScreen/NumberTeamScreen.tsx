@@ -1,13 +1,31 @@
-import { FC, useState } from 'react'
+import React, { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom' // Importar useNavigate
 import logo from '../../assets/Logo-Subtitle.svg'
 import profileIcon from '../../assets/iconeProfile.svg'
 import logoutIcon from '../../assets/line-md_log-out.svg'
 import './NumberTeamScreen.style.css'
+
 export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
+  const navigate = useNavigate() // Hook para navegação
+
+  // Manipular mudança no Select
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setSelectedTeams(Number(event.target.value))
   }
+
+  // Navegar ao clicar no botão Continuar
+  const handleContinue = (): void => {
+    if (selectedTeams) {
+      navigate('/game-setup', { state: { teams: selectedTeams } }) // Passa a quantidade de times via state
+    }
+  }
+
+  // Navegar ao clicar no botão Sair
+  const handleLogout = (): void => {
+    navigate('/') // Redireciona para a página inicial
+  }
+
   return (
     <div className="containerNumberTeamScreen">
       <header className="headerNumberTeamScreen">
@@ -19,12 +37,13 @@ export const NumberTeamScreen: FC = () => {
           <img src={logo} className="logoNumberTeamScreen" alt="logo" />
         </div>
         <div className="logoutContainerNumberTeamScreen">
-          <button className="logoutButton">
+          <button className="logoutButton" onClick={handleLogout}>
             Sair
             <img src={logoutIcon} className="logoutIconNumberTeamScreen" alt="Logout Icon" />
           </button>
         </div>
       </header>
+
       <main className="mainNumberTeamScreen">
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
@@ -40,7 +59,11 @@ export const NumberTeamScreen: FC = () => {
             ))}
           </select>
         </div>
-        <button className="continueButtonNumberTeamScreen" disabled={selectedTeams === null}>
+        <button
+          className="continueButtonNumberTeamScreen"
+          onClick={handleContinue}
+          disabled={selectedTeams === null}
+        >
           Continuar
         </button>
       </main>
