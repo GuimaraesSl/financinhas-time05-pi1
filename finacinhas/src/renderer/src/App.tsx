@@ -1,8 +1,7 @@
-import '../src/assets/fonts/Fredoka-Light.ttf'
-import NumberTeamScreen from './pages/NumberTeamScreen/NumberTeamScreen'
+import EnterRoomScreen from './pages/EnterRoomScreen/EnterRoomScreen'
 
 function App(): JSX.Element {
-  return <NumberTeamScreen />
+  return <EnterRoomScreen />
 }
 
 export default App
