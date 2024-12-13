@@ -76,7 +76,7 @@
     color: #570000;
     border: 5px solid #570000;
     border-radius: 20px;
-    font-family: 'Fredoka One', sans-serif;
+    font-family: 'Fredoka', sans-serif;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -94,7 +94,7 @@
 
 .titleNumberTeamScreen {
     color: #000000;
-    font: 700 30px sans-serif;
+    font: 500 30px "Fredoka";
     margin: 20px 0px;
     text-align: center;
 }
