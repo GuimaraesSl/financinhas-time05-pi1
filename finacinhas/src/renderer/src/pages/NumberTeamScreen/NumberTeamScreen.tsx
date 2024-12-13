@@ -25,7 +25,7 @@ export const NumberTeamScreen: FC = () => {
           </button>
         </div>
       </header>
-      <main className="mainNumberTeamScreen">
+      <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
           <label htmlFor="teamSelect" className="labelNumberTeamScreen">

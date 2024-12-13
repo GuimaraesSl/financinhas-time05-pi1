@@ -9,9 +9,9 @@ const ProfileSelectScreen: React.FC = () => {
         <img src={logo} className="logoProfileSelectScreen" alt="logo" />
       </header>
       <main className="mainProfileSelectScreen">
-        <h2>Você é um...</h2>
-        <button className="ProfileButton">SOU ALUNO</button>
-        <button className="ProfileButton">SOU PROFESSOR</button>
+        <h2 className="titlePage">Você é um...</h2>
+        <button className="profileButton">SOU ALUNO</button>
+        <button className="profileButton">SOU PROFESSOR</button>
       </main>
     </div>
   )
