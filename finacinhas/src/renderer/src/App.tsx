@@ -1,7 +1,9 @@
-import HomePage from './pages/HomeScreen/HomeScreen'
+import ProfileSelectScreen from './pages/ProfileSelect/ProfileSelectScreen'
+
+import '../src/assets/fonts/Fredoka-Light.ttf'
 
 function App(): JSX.Element {
-  return <HomePage />
+  return <ProfileSelectScreen />
 }
 
 export default App
