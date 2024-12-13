@@ -1,7 +1,7 @@
-import EnterRoomScreen from './pages/EnterRoomScreen/EnterRoomScreen'
+import LoginPage from './pages/LoginScreen/LoginScreen'
 
 function App(): JSX.Element {
-  return <EnterRoomScreen />
+  return <LoginPage />
 }
 
 export default App
