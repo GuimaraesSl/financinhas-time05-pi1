@@ -1,7 +1,7 @@
-import HomePage from './pages/LoginScreen/LoginScreen'
+import LoginPage from './pages/LoginScreen/LoginScreen'
 
 function App(): JSX.Element {
-  return <HomePage />
+  return <LoginPage />
 }
 
 export default App
