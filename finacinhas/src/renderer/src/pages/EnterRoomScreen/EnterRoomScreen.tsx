@@ -19,8 +19,10 @@ const EnterRoomScreen: React.FC = () => {
       </header>
       <main className="mainEnterRoomScreen">
         <h2>Digite o código para entrar na sala</h2>
-        <input type="text" className="inputEnterRoomScreen" />
-        <button className="EnterRoomButton">CONTINUAR</button>
+        <input placeholder="Digite seu código" type="text" className="inputEnterRoomScreen" />
+        <button className="EnterRoomButton" onClick={() => navigate('/select-team')}>
+          CONTINUAR
+        </button>
       </main>
     </div>
   )

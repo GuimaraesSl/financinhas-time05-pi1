@@ -7,6 +7,28 @@
 }
 
 .headerSelectTeamScreen{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.headerSelectTeamScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.headerSelectTeamScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
+}
+
+.logo{
   margin-top: 60px;
   display: flex;
   justify-content: center;
@@ -29,35 +51,30 @@
   width: 100%;
 }
 
-.mainSelectTeamScreen h2{
-  font-family: sans-serif;
-  font-weight: bold;
-  color: black;
+.mainSelectTeamScreen h2 {
+    font-weight: 500;
+    font-size: 32px;
+    color: #1D1D1D;
 }
 
-.selectTeam{
-  margin-top: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.selectTeam {
+  padding: 15px 15px;
   border: 3px solid #1D1D1D;
   border-radius: 10px;
-  width: 400px;
-  height: 50px;
-  font-family: sans-serif;
-  font-weight: bold;
+  width: 553px;
+  height: 80px;
+  font-size: 25px;
   cursor: pointer;
+  margin-bottom: 40px;
 }
 
-.optionTeamSelection{
-  padding-top: 10px;
-  padding-bottom: 10px;
+.optionTeamSelection {
+  padding: 15px 15px;
   border: 3px solid #1D1D1D;
   border-radius: 10px;
-  width: 400px;
-  height: 50px;
-  font-family: sans-serif;
-  font-size: large;
-  font-weight: bold;
+  width: 553px;
+  height: 80px;
+  font-size: 25px;
   cursor: pointer;
 }
 
@@ -67,9 +84,9 @@
   background-color: #13BB0A;
   color: #00570A;
   border: 5px solid #00570A;
-  border-radius: 10px;
-  width: 400px;
-  font-family: 'Fredoka One', sans-serif;
+  border-radius: 20px;
+  width: 553px;
+  font-family: 'Fredoka', sans-serif;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;
