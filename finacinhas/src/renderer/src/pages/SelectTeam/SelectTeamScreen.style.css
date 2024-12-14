@@ -1,15 +1,12 @@
-.containerEnterRoomScreen {
+.containerSelectTeamScreen{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
   width: 100vw;
-  background-color: white;
-  box-sizing: border-box;
+  height: 100vh;
+  background-color: #f9f9f9;
 }
 
-.headerEnterRoomScreen{
+.headerSelectTeamScreen{
   margin-top: 40px;
   display: flex;
   justify-content: center;
@@ -18,7 +15,7 @@
   width: 100%;
 }
 
-.headerEnterRoomScreen .arrowIcon {
+.headerSelectTeamScreen .arrowIcon {
   position: absolute;
   left: 70px;
   top: 10%;
@@ -27,16 +24,25 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.headerEnterRoomScreen .arrowIcon:hover {
+.headerSelectTeamScreen .arrowIcon:hover {
   transform: scale(1.2) translateY(-50%);
 }
 
-.logoEnterRoomScreen{
+.logo{
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.logoSelectTeamScreen{
   width: 350px;
   height: 71.89px;
 }
 
-.mainEnterRoomScreen{
+.mainSelectTeamScreen{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,30 +51,34 @@
   width: 100%;
 }
 
-.mainEnterRoomScreen h2{
-  font-weight: 500;
-  font-size: 32px;
-  color: #1D1D1D;
+.mainSelectTeamScreen h2 {
+    font-weight: 500;
+    font-size: 32px;
+    color: #1D1D1D;
 }
 
-.inputEnterRoomScreen {
-  border:  3px solid #1D1D1D; 
-  border-radius: 20px;
+.selectTeam {
+  padding: 15px 15px;
+  border: 3px solid #1D1D1D;
+  border-radius: 10px;
   width: 553px;
   height: 80px;
-  font-family: sans-serif;
-  font-weight: bold;
-  font-size: 35px;
-  padding: 20px;
-  margin-bottom: 44px;
-  margin-top: 20px;
+  font-size: 25px;
+  cursor: pointer;
+  margin-bottom: 40px;
 }
 
-.inputEnterRoomScreen {
-  outline: none;
+.optionTeamSelection {
+  padding: 15px 15px;
+  border: 3px solid #1D1D1D;
+  border-radius: 10px;
+  width: 553px;
+  height: 80px;
+  font-size: 25px;
+  cursor: pointer;
 }
 
-.EnterRoomButton{
+.SelectTeamButton{
   padding: 10px 40px;
   margin-top: 15px;
   background-color: #13BB0A;
@@ -85,11 +95,11 @@
   transition: transform 0.2s ease;
 }
 
-.EnterRoomButton:hover{
-  transform: scale(1.05);
+.SelectTeamButton:hover{
+  transform: scale(1.1);
 }
 
-.EnterRoomButton:active{
+.SelectTeamButton:active{
   transform: scale(1);
   box-shadow: none;
 }
