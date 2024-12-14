@@ -1,0 +1,107 @@
+/* RegisterScreen.css */
+
+.containerRegisterScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.headerRegisterScreen { 
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.headerRegisterScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.headerRegisterScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
+}
+
+.logoRegisterScreen {
+  width: 350px;
+  height: 71.89px;
+}
+
+.mainRegisterScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+
+.titleRegisterScreen {
+  color: #000000;
+  font-family: 'Fredoka';
+  font-weight: 600;
+  font-size: 32;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formRegisterScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 554px;
+  max-width: 90%;
+  padding: 30px;
+  background: #ffffff;
+  border: none; 
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+.buttonRegisterScreen {
+  padding: 10px 40px;
+  background-color: #13bb0a;
+  color: #00570a;
+  border: 5px solid #00570a;
+  border-radius: 20px;
+  font-family: 'Fredoka';
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.buttonRegisterScreen:hover {
+  transform: scale(1.05);
+}
+
+.linkRegisterScreen {
+  color: #1D1D1D;
+  font-size: 24px;
+  text-decoration: underline;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.linkRegisterScreen:hover {
+  transform: scale(1.03);
+}
+
+

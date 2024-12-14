@@ -1,17 +1,15 @@
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
 import React from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './HomeScreen.style.css'
+import { useNavigate } from 'react-router-dom'
 
 const HomePage: React.FC = () => {
-  const handlePlayClick = () => {
-    console.log('Jogar!')
-  }
+  const navigate = useNavigate()
 
   return (
     <div className="container">
       <img className="logo" src={logo} alt="Financinhas" />
-      <button onClick={handlePlayClick} className="button">
+      <button onClick={() => navigate('/profile-select')} className="button">
         JOGAR
       </button>
     </div>
