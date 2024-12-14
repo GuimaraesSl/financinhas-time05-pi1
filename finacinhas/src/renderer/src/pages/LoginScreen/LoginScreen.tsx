@@ -24,7 +24,9 @@ export const LoginScreen: FC = () => {
           <h2>LOGIN</h2>
           <InputField id="email" name="email" label="Email" type="email" />
           <InputField id="senha" name="senha" label="Senha" type="password" />
-          <button className="buttonLoginScreen">ENTRAR</button>
+          <button onClick={() => navigate('/number-teams')} className="buttonLoginScreen">
+            ENTRAR
+          </button>
           <p onClick={() => navigate('/register')} className="registerLinkLoginScreen">
             Ainda não tenho uma conta
           </p>

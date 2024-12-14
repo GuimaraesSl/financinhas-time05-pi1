@@ -9,7 +9,7 @@
 }
 
 .headerLoginScreen {
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,7 +31,6 @@
 }
 
 .headerLoginScreen .logoLoginScreen {
-  margin-top: 65px;
   width: 350px;
   height: 71.89px;
 }

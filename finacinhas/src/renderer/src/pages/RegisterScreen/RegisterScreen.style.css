@@ -14,8 +14,8 @@
   margin-top: 40px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-
+  align-items: center;
+  position: relative;
   width: 100%;
 }
 
@@ -35,9 +35,6 @@
 .logoRegisterScreen {
   width: 350px;
   height: 71.89px;
-  display: block;
-  margin: 0 auto; 
-  margin-bottom: 10px; 
 }
 
 .mainRegisterScreen {

@@ -13,7 +13,7 @@ const ProfileSelectScreen: React.FC = () => {
       </header>
       <main className="mainProfileSelectScreen">
         <h2 className="titlePage">Você é um...</h2>
-        <button onClick={() => navigate('W I P')} className="profileButton">
+        <button onClick={() => navigate('/enter')} className="profileButton">
           SOU ALUNO
         </button>
         <button onClick={() => navigate('/login')} className="profileButton">
