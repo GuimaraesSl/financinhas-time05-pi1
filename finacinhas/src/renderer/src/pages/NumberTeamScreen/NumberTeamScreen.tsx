@@ -47,11 +47,10 @@ export const NumberTeamScreen: FC = () => {
       <main className="mainNumberTeamScreen">
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
-          <label htmlFor="teamSelect" className="labelNumberTeamScreen">
-            Selecione a quantidade:
-          </label>
           <select id="teamSelect" className="selectNumberTeamScreen" onChange={handleSelectChange}>
-            <option value="">Selecionar Quantidade</option>
+            <option value="" className="labelNumberTeamScreen">
+              Selecionar quantidade
+            </option>
             {[...Array(10)].map((_, index) => (
               <option key={index + 1} value={index + 1}>
                 {index + 1}

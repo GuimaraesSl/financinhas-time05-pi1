@@ -5,6 +5,7 @@
     justify-content: center;
     height: 100vh;
     width: 100vw;
+    background-color: white;
     box-sizing: border-box;
 }
 
@@ -75,7 +76,7 @@
     color: #570000;
     border: 5px solid #570000;
     border-radius: 20px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Fredoka One', sans-serif;
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -93,10 +94,8 @@
 
 .titleNumberTeamScreen {
     color: #000000;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font: bold;
-    font-size: 40px;
-    margin: 5px 0px;
+    font: 700 32px sans-serif;
+    margin: 20px 0px;
     text-align: center;
 }
 
