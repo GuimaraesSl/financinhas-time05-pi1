@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   return (
     <div className="container">
       <img className="logo" src={logo} alt="Financinhas" />
-      <button onClick={() => navigate('/register')} className="button">
+      <button onClick={() => navigate('/profile-select')} className="button">
         JOGAR
       </button>
     </div>

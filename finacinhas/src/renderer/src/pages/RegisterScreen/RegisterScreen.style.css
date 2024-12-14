@@ -1,59 +1,89 @@
 /* RegisterScreen.css */
-body {
-  background-color: #ffffff; 
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.container {
+.containerRegisterScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 400px; 
-  padding: 20px;
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
   box-sizing: border-box;
+}
+
+.headerRegisterScreen { 
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.headerRegisterScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.headerRegisterScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
+}
+
+.logoRegisterScreen {
+  width: 350px;
+  height: 71.89px;
+  display: block;
+  margin: 0 auto; 
+  margin-bottom: 10px; 
+}
+
+.mainRegisterScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
 }
 
 .titleRegisterScreen {
   color: #000000;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-weight: bold;
-  font-size: 2.2rem; 
+  font-family: 'Fredoka';
+  font-weight: 600;
+  font-size: 32;
+  letter-spacing: 2px;
   text-align: center;
   margin-bottom: 10px;
 }
 
-.logoRegisterScreen {
-  width: 80%;
-  max-width: 350px;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  margin-top: 20px; 
-  margin-bottom: 10px; 
+.formRegisterScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 554px;
+  max-width: 90%;
+  padding: 30px;
+  background: #ffffff;
+  border: none; 
+  box-shadow: none;
+  box-sizing: border-box;
 }
 
 .buttonRegisterScreen {
-  margin-top: 25px;
   padding: 10px 40px;
   background-color: #13bb0a;
   color: #00570a;
   border: 5px solid #00570a;
   border-radius: 20px;
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 25px;
+  font-family: 'Fredoka';
+  font-size: 32px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
-  text-transform: uppercase;
   width: 100%;
   box-sizing: border-box;
   text-align: center;
@@ -65,14 +95,12 @@ body {
 }
 
 .linkRegisterScreen {
-  margin-top: 20px;
-  color: black;
+  color: #1D1D1D;
+  font-size: 24px;
   text-decoration: underline;
-  text-align: center; 
-  display: block; 
-  width: 100%; 
-  text-align: center; 
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .linkRegisterScreen:hover {
