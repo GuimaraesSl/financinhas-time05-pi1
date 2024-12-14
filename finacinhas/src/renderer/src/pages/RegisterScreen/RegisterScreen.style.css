@@ -1,4 +1,6 @@
-.containerLoginScreen {
+/* RegisterScreen.css */
+
+.containerRegisterScreen {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +10,7 @@
   box-sizing: border-box;
 }
 
-.headerLoginScreen {
+.headerRegisterScreen { 
   margin-top: 40px;
   display: flex;
   justify-content: center;
@@ -17,7 +19,7 @@
   width: 100%;
 }
 
-.headerLoginScreen .arrowIcon {
+.headerRegisterScreen .arrowIcon {
   position: absolute;
   left: 70px;
   top: 10%;
@@ -26,16 +28,16 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.headerLoginScreen .arrowIcon:hover {
+.headerRegisterScreen .arrowIcon:hover {
   transform: scale(1.2) translateY(-50%);
 }
 
-.headerLoginScreen .logoLoginScreen {
+.logoRegisterScreen {
   width: 350px;
   height: 71.89px;
 }
 
-.mainLoginScreen {
+.mainRegisterScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,7 +46,17 @@
   width: 100%;
 }
 
-.formLoginScreen {
+.titleRegisterScreen {
+  color: #000000;
+  font-family: 'Fredoka';
+  font-weight: 600;
+  font-size: 32;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.formRegisterScreen {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -58,30 +70,28 @@
   box-sizing: border-box;
 }
 
-.buttonLoginScreen {
-  width: 100%;
-  padding: 15px;
-  margin-top: 20px;
-  background-color: #13BB0A;
-  color: #00570A;
-  border: 5px solid #00570A;
+.buttonRegisterScreen {
+  padding: 10px 40px;
+  background-color: #13bb0a;
+  color: #00570a;
+  border: 5px solid #00570a;
   border-radius: 20px;
-  font-family: 'Fredoka', sans-serif;
+  font-family: 'Fredoka';
   font-size: 32px;
   font-weight: bold;
   cursor: pointer;
   box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
-  text-transform: uppercase;
-  transition: transform 0.2s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
+  transition: transform 0.2s ease-in-out;
 }
 
-.buttonLoginScreen:hover {
+.buttonRegisterScreen:hover {
   transform: scale(1.05);
 }
 
-.registerLinkLoginScreen {
-  margin-top: 20px;
+.linkRegisterScreen {
   color: #1D1D1D;
   font-size: 24px;
   text-decoration: underline;
@@ -90,15 +100,8 @@
   font-weight: 600;
 }
 
-.registerLinkLoginScreen:hover {
+.linkRegisterScreen:hover {
   transform: scale(1.03);
 }
 
-h2 {
-  margin: 40px 0; 
-  font-size: 32px; 
-  font-family: 'Fredoka', sans-serif;
-  font-weight: bold;
-  line-height: 39px;
-  color: #1D1D1D;
-}
+

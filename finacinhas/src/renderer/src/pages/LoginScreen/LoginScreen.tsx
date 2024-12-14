@@ -1,26 +1,35 @@
 import { FC } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './LoginScreen.style.css'
+import { useNavigate } from 'react-router-dom'
+import { MdArrowBack } from 'react-icons/md'
+import InputField from '@renderer/components/InputField/InputField'
 
 export const LoginScreen: FC = () => {
+  const navigate = useNavigate()
+
   return (
     <div className="containerLoginScreen">
       <header className="headerLoginScreen">
+        <MdArrowBack
+          onClick={() => navigate('/profile-select')}
+          size={45}
+          color="#000"
+          className="arrowIcon"
+        />
         <img src={logo} className="logoLoginScreen" alt="logo" />
       </header>
       <main className="mainLoginScreen">
         <form className="formLoginScreen">
           <h2>LOGIN</h2>
-          <label className="labelLoginScreen" htmlFor="email">
-            Email
-          </label>
-          <input id="email" type="email" className="inputLoginScreen" />
-          <label className="labelLoginScreen" htmlFor="password">
-            Senha
-          </label>
-          <input id="password" type="password" className="inputLoginScreen" />
-          <button className="buttonLoginScreen">ENTRAR</button>
-          <p className="registerLinkLoginScreen">Ainda não tenho uma conta</p>
+          <InputField id="email" name="email" label="Email" type="email" />
+          <InputField id="senha" name="senha" label="Senha" type="password" />
+          <button onClick={() => navigate('/number-teams')} className="buttonLoginScreen">
+            ENTRAR
+          </button>
+          <p onClick={() => navigate('/register')} className="registerLinkLoginScreen">
+            Ainda não tenho uma conta
+          </p>
         </form>
       </main>
     </div>
