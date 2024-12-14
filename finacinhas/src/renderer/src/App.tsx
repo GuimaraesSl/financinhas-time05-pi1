@@ -1,7 +1,7 @@
-import LoginPage from './pages/LoginScreen/LoginScreen'
+import ConfigTeam from './pages/ConfigTeams/ConfigTeams'
 
 function App(): JSX.Element {
-  return <LoginPage />
+  return <ConfigTeam />
 }
 
 export default App
