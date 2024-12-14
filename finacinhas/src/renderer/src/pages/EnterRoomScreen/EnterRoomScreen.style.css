@@ -10,12 +10,25 @@
 }
 
 .headerEnterRoomScreen{
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-
+  align-items: center;
+  position: relative;
   width: 100%;
+}
+
+.headerEnterRoomScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.headerEnterRoomScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
 }
 
 .logoEnterRoomScreen{
