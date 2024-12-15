@@ -3,6 +3,7 @@ import Header from '../components/Header/Header'
 import './ConfigTeams.style.css'
 import TeamCard from './components/TeamCard/TeamCard'
 import Mais from '../../assets/icon+.svg'
+import { useNavigate } from 'react-router-dom'
 
 export interface Team {
   name: string
@@ -41,10 +42,21 @@ const ConfigTeam: FC = () => {
     },
     [teams]
   )
+  const navigate = useNavigate();
+
+  // Navegar ao clicar no botão Continuar
+  const handleContinue = (): void => {
+    navigate('/') // Redireciona para a tela de configuração do jogo
+  }
+
+  // Navegar ao clicar no botão Sair
+  const handleLogout = (): void => {
+    navigate('/') // Redireciona para a página inicial
+  }
 
   return (
     <div className="containerConfigTeam">
-      <Header profileName="Jefferson" onLogout={() => console.log('Logout')} />
+      <Header profileName="Jefferson" onLogout={() => handleLogout()} />
       <main className="mainConfigTeam">
         <h1 className="titleConfigTeam">Equipes</h1>
         <div className="rankingContainer">
@@ -64,7 +76,9 @@ const ConfigTeam: FC = () => {
           </div>
         </div>
 
-        <button className="startButton">TUDO CERTO, VAMOS LÁ!</button>
+        <button className="startButton" onClick={handleContinue}>
+          TUDO CERTO, VAMOS LÁ!
+        </button>
       </main>
     </div>
   )
