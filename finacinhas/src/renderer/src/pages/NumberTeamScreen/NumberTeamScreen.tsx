@@ -1,7 +1,5 @@
 import { FC, useState } from 'react'
-import logo from '../../assets/Logo-Subtitle.svg'
-import profileIcon from '../../assets/iconeProfile.svg'
-import logoutIcon from '../../assets/line-md_log-out.svg'
+import Header from '../components/Header/Header'
 import './NumberTeamScreen.style.css'
 export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
@@ -10,21 +8,7 @@ export const NumberTeamScreen: FC = () => {
   }
   return (
     <div className="containerNumberTeamScreen">
-      <header className="headerNumberTeamScreen">
-        <div className="profileContainerNumberTeamScreen">
-          <img src={profileIcon} className="profileNumberTeamScreen" alt="Profile Icon" />
-          <p className="profileNameNumberTeamScreen">Nome do Usuário</p>
-        </div>
-        <div className="logoContainerNumberTeamScreen">
-          <img src={logo} className="logoNumberTeamScreen" alt="logo" />
-        </div>
-        <div className="logoutContainerNumberTeamScreen">
-          <button className="logoutButton">
-            Sair
-            <img src={logoutIcon} className="logoutIconNumberTeamScreen" alt="Logout Icon" />
-          </button>
-        </div>
-      </header>
+    <Header profileName="Jefferson" onLogout={() => console.log('Logout')} />
       <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
@@ -32,7 +16,7 @@ export const NumberTeamScreen: FC = () => {
             <option value="" className="labelNumberTeamScreen">
               Selecionar quantidade
             </option>
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <option key={index + 1} value={index + 1}>
                 {index + 1}
               </option>
