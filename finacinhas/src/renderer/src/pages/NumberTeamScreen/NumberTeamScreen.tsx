@@ -1,14 +1,36 @@
 import { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import logo from '../../assets/Logo-Subtitle.svg'
+import profileIcon from '../../assets/iconeProfile.svg'
+import logoutIcon from '../../assets/line-md_log-out.svg'
 import Header from '../components/Header/Header'
 import './NumberTeamScreen.style.css'
+
 export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
+  const navigate = useNavigate() // Hook para navegação
+
+  // Manipular mudança no Select
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setSelectedTeams(Number(event.target.value))
   }
+
+  // Navegar ao clicar no botão Continuar
+  const handleContinue = (): void => {
+    if (selectedTeams) {
+      navigate('/game-setup', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
+    }
+  }
+
+  // Navegar ao clicar no botão Sair
+  const handleLogout = (): void => {
+    navigate('/') // Redireciona para a página inicial
+  }
+
   return (
     <div className="containerNumberTeamScreen">
-    <Header profileName="Jefferson" onLogout={() => console.log('Logout')} />
+      <Header profileName="Jefferson" onLogout={() => handleLogout()} />
+      
       <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
@@ -23,7 +45,11 @@ export const NumberTeamScreen: FC = () => {
             ))}
           </select>
         </div>
-        <button className="continueButtonNumberTeamScreen" disabled={selectedTeams === null}>
+        <button
+          className="continueButtonNumberTeamScreen"
+          onClick={handleContinue}
+          disabled={selectedTeams === null}
+        >
           Continuar
         </button>
       </main>

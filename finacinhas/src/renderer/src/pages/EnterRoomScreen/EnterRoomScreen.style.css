@@ -10,12 +10,25 @@
 }
 
 .headerEnterRoomScreen{
-  margin-top: 60px;
+  margin-top: 40px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-
+  align-items: center;
+  position: relative;
   width: 100%;
+}
+
+.headerEnterRoomScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.headerEnterRoomScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
 }
 
 .logoEnterRoomScreen{
@@ -38,9 +51,9 @@
   color: #1D1D1D;
 }
 
-.inputEnterRoomScreen{
-  border:  5px solid #1D1D1D; 
-  border-radius: 10px;
+.inputEnterRoomScreen {
+  border:  3px solid #1D1D1D; 
+  border-radius: 20px;
   width: 553px;
   height: 80px;
   font-family: sans-serif;
@@ -51,15 +64,19 @@
   margin-top: 20px;
 }
 
+.inputEnterRoomScreen {
+  outline: none;
+}
+
 .EnterRoomButton{
   padding: 10px 40px;
   margin-top: 15px;
   background-color: #13BB0A;
   color: #00570A;
   border: 5px solid #00570A;
-  border-radius: 10px;
+  border-radius: 20px;
   width: 553px;
-  font-family: 'Fredoka One', sans-serif;
+  font-family: 'Fredoka', sans-serif;
   font-size: 30px;
   font-weight: bold;
   cursor: pointer;

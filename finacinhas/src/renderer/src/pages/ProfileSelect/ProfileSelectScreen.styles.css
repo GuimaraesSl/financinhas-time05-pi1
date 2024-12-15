@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-.headerProfileSelectScreen{
+.headerProfileSelectScreen{ 
   margin-top: 60px;
   display: flex;
   justify-content: center;
@@ -17,9 +17,10 @@
   width: 100%;
 }
 
-.logoProfileSelectScreen{
-    width: 350px;
-    height: 71.89px;
+.logoProfileSelectScreen {
+  margin-top: 65px;
+  width: 350px;
+  height: 71.89px;
 }
 
 .mainProfileSelectScreen {
