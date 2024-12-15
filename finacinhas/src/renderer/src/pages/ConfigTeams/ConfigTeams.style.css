@@ -1,170 +1,106 @@
-:root {
-    --primary-color: #13bb0a;
-    --secondary-color: #570000;
-    --alert-color: #f14c4c;
-    --background-color: #f0f0f0;
-    --text-color: #000;
-    --font-size-large: 32px;
-    --font-size-medium: 20px;
-    --font-size-small: 18px;
-    --font-weight-bold: bold;
-    --border-radius: 10px;
-  }
-  
-  .containerConfigTeam {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    width: 100vw;
-    background-color: white;
-    box-sizing: border-box;
-  }
-  
-  .headerConfigTeam {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 20px 80px; /* Menos espaço no header */
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-  }
-  
-  .profileContainer {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-  }
-  
-  .profileIcon {
-    height: 48px;
-    width: 48px;
-    object-fit: contain;
-    margin-right: 10px;
-  }
-  
-  .profileName {
-    font-size: 22px;
-    font-weight: var(--font-weight-bold);
-    color: var(--text-color);
-  }
-  
-  .logoConfigTeam {
-    width: 450px;
-    max-width: 100%;
-  }
-  
-  .logoutButton {
-    width: 175px;
-    height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--alert-color);
-    color: var(--secondary-color);
-    border: 5px solid var(--secondary-color);
-    border-radius: 20px;
-    font-family: 'Fredoka', sans-serif;
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-bold);
-    cursor: pointer;
-    box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
-    text-transform: uppercase;
-    box-sizing: border-box;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .logoutButton:hover {
-    transform: scale(1.05);
-  }
-  
-  .mainConfigTeam {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 900px;
-    padding: 10px;
-    padding-top: 10px;
-  }
-  
-  .titleConfigTeam {
-    font-size: var(--font-size-large);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-color);
-    margin-bottom: 15px;
-    margin-top: 25px;
-  }
-  
-  .rankingContainer {
-    width: 100%;
-    max-width: 1200px;
-    background-color: white;
-    border: 4px solid var(--text-color);
-    border-radius: var(--border-radius);
-    box-shadow: 8px 6px 0px var(--text-color);
-    padding: 15px 15px;
-    box-sizing: border-box;
-  }
-  
-  .rankingHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    font-size: var(--font-size-medium);
-    font-weight: var(--font-weight-bold);
-    color: var(--text-color);
-  }
-  
-  .addTeamButton {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    font-weight: var(--font-weight-bold);
-    border: 3px solid var(--secondary-color);
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    padding: 5px 15px;
-    box-shadow: 4px 4px 0px var(--text-color);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .addTeamButton:hover {
-    transform: scale(1.05);
-  }
-  
-  .teamsList {
-    max-height: 300px;
-    overflow-y: auto;
-    gap: 10px;
-  }
-  
-  .deleteButton:hover {
-    transform: scale(1.1);
-  }
-  
-  .startButton {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    font-weight: var(--font-weight-bold);
-    border: 5px solid var(--secondary-color);
-    border-radius: 20px;
-    font-size: var(--font-size-medium);
-    padding: 10px 40px;
-    margin-top: 20px;
-    cursor: pointer;
-    box-shadow: 6px 6px 0px var(--text-color);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .startButton:hover {
-    transform: scale(1.05);
-  }
-  
+.containerConfigTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.mainConfigTeam {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1043px;
+  max-height: 563px;
+  padding: 10px;
+  padding-top: 10px;
+}
+
+.titleConfigTeam {
+  font-size: 32px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 15px;
+  margin-top: 25px;
+}
+
+.rankingContainer {
+  width: 100%;
+  max-width: 1200px;
+  background-color: white;
+  border: 4px solid #000;
+  border-radius: 10px;
+  box-shadow: 12px 12px 0px #000;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+}
+
+.rankingHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-family: 'Fredoka', sans-serif;
+  color: #000;
+}
+
+.addTeamButton {
+  display: flex;
+  background-color: #13bb0a;
+  font-family: 'Fredoka', sans-serif;
+  color: #00570A;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  border: 4px solid #00570A;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.addTeamButton:hover {
+  transform: scale(1.05);
+}
+
+.addTeamButton img {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.teamsList {
+  max-height: 290px;
+  overflow: auto;
+  gap: 10px;
+  margin-top: 25px;
+  margin-bottom: 20px;
+
+}
+
+.startButton {
+  background-color: #13bb0a;
+  color: #00570A;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: bold;
+  border: 5px solid #00570A;
+  border-radius: 20px;
+  font-size: 20px;
+  padding: 10px 40px;
+  margin-top: 20px;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px 0px #000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.startButton:hover {
+  transform: scale(1.05);
+}
+

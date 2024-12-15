@@ -1,9 +1,8 @@
 import { FC, useState, useCallback } from 'react'
-import logo from '../../assets/Logo-Subtitle.svg'
-import profileIcon from '../../assets/iconeProfile.svg'
-import logoutIcon from '../../assets/line-md_log-out.svg'
+import Header from '../components/Header/Header'
 import './ConfigTeams.style.css'
 import TeamCard from './components/TeamCard/TeamCard'
+import Mais from '../../assets/icon+.svg'
 
 export interface Team {
   name: string
@@ -23,7 +22,6 @@ const ConfigTeam: FC = () => {
   // Função para adicionar uma equipe
   const handleAddTeam = useCallback(() => {
     if (teams.length < maxTeams) {
-      // Determina o nome da nova equipe como "Equipe X", sendo X o próximo número disponível.
       const nextTeamNumber = teams.length + 1
       const newTeamName = `Equipe ${nextTeamNumber}`
       setTeams((prevTeams) => [...prevTeams, { name: newTeamName, points: 0 }])
@@ -46,28 +44,17 @@ const ConfigTeam: FC = () => {
 
   return (
     <div className="containerConfigTeam">
-      <header className="headerConfigTeam">
-        <div className="profileContainer">
-          <img src={profileIcon} className="profileIcon" alt="Profile Icon" />
-          <p className="profileName">Prof. Jeferson</p>
-        </div>
-        <img src={logo} className="logoConfigTeam" alt="Logo Financinhas" />
-        <button className="logoutButton">
-          SAIR
-          <img src={logoutIcon} alt="Logout Icon" />
-        </button>
-      </header>
-
+      <Header profileName="Jefferson" onLogout={() => console.log('Logout')} />
       <main className="mainConfigTeam">
         <h1 className="titleConfigTeam">Equipes</h1>
         <div className="rankingContainer">
           <div className="rankingHeader">
             <span>RANKING GERAL</span>
             <button className="addTeamButton" onClick={handleAddTeam}>
-              + ADICIONAR EQUIPE
+              <img src={Mais} alt="Adicionar equipe" />
+              ADICIONAR EQUIPE
             </button>
           </div>
-
           <div className="teamsList">
             {teams.map((team, index) => (
               <>
