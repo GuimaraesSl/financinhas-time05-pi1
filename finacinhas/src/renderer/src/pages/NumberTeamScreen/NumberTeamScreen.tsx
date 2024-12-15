@@ -1,8 +1,5 @@
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import logo from '../../assets/Logo-Subtitle.svg'
-import profileIcon from '../../assets/iconeProfile.svg'
-import logoutIcon from '../../assets/line-md_log-out.svg'
 import Header from '../components/Header/Header'
 import './NumberTeamScreen.style.css'
 
@@ -18,7 +15,7 @@ export const NumberTeamScreen: FC = () => {
   // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/game-setup', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
+      navigate('/config-team', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
     }
   }
 
