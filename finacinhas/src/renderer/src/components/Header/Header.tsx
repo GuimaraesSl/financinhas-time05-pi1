@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import logo from '../../../assets/Logo-Subtitle.svg'
-import profileIcon from '../../../assets/iconeProfile.svg'
-import logoutIcon from '../../../assets/line-md_log-out.svg'
+import logo from '../../assets/Logo-Subtitle.svg'
+import profileIcon from '../../assets/iconeProfile.svg'
+import logoutIcon from '../../assets/line-md_log-out.svg'
 import './Header.style.css'
 
 interface HeaderProps {

@@ -26,7 +26,6 @@
   font-weight: bold;
   color: #000;
   margin-bottom: 15px;
-  margin-top: 25px;
 }
 
 .rankingContainer {
@@ -49,6 +48,11 @@
   font-size: 24px;
   font-family: 'Fredoka', sans-serif;
   color: #000;
+}
+
+.rankingTitle {
+  font-weight: 500;
+  margin-left: 5px;
 }
 
 .addTeamButton {
@@ -77,12 +81,11 @@
 }
 
 .teamsList {
-  max-height: 290px;
+  max-height: 400px;
   overflow: auto;
   gap: 10px;
   margin-top: 25px;
   margin-bottom: 20px;
-
 }
 
 .startButton {

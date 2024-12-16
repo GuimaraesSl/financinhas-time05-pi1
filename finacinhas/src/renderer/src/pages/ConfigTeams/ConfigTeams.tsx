@@ -1,5 +1,5 @@
 import { FC, useState, useCallback } from 'react'
-import Header from '../components/Header/Header'
+import Header from '../../components/Header/Header'
 import './ConfigTeams.style.css'
 import TeamCard from './components/TeamCard/TeamCard'
 import Mais from '../../assets/icon+.svg'
@@ -16,8 +16,7 @@ const ConfigTeam: FC = () => {
     { name: 'Equipe 1', points: 0 },
     { name: 'Equipe 2', points: 0 },
     { name: 'Equipe 3', points: 0 },
-    { name: 'Equipe 4', points: 0 },
-    { name: 'Equipe 5', points: 0 }
+    { name: 'Equipe 4', points: 0 }
   ])
 
   // Função para adicionar uma equipe
@@ -42,7 +41,7 @@ const ConfigTeam: FC = () => {
     },
     [teams]
   )
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
@@ -61,7 +60,7 @@ const ConfigTeam: FC = () => {
         <h1 className="titleConfigTeam">Equipes</h1>
         <div className="rankingContainer">
           <div className="rankingHeader">
-            <span>RANKING GERAL</span>
+            <span className="rankingTitle">RANKING GERAL</span>
             <button className="addTeamButton" onClick={handleAddTeam}>
               <img src={Mais} alt="Adicionar equipe" />
               ADICIONAR EQUIPE

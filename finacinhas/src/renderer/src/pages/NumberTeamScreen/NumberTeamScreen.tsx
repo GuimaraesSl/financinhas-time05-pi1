@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Header from '../components/Header/Header'
+import Header from '../../components/Header/Header'
 import './NumberTeamScreen.style.css'
 
 export const NumberTeamScreen: FC = () => {
@@ -27,7 +27,6 @@ export const NumberTeamScreen: FC = () => {
   return (
     <div className="containerNumberTeamScreen">
       <Header profileName="Jefferson" onLogout={() => handleLogout()} />
-      
       <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
