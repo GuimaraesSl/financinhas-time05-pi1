@@ -8,16 +8,12 @@ const HomePage: React.FC = () => {
   const navigate = useNavigate()
 
   const handlePlayClick = (): void => {
-    navigate('/choiceScreen')
+    navigate('/profile-select')
   }
 
   return (
     <div className="container">
-      <img className="logo" src={logo} alt="Financinhas" />
-      {/*
-        FIX: Resolve this button.
-       <button onClick={() => navigate('/profile-select')} className="button">
-         * */}
+      <img className="logoHome" src={logo} alt="Financinhas" />
       <Button
         onClick={handlePlayClick}
         className="button"

@@ -4,9 +4,7 @@ import MatchScreen from './MatchScreen'
 const MatchScreenWrapper: React.FC = () => {
   const { teamName } = useParams<{ teamName: string }>()
 
-  if (!teamName) {
-    return <p>Nome da equipe não fornecido!</p>
-  }
+  console.log(teamName)
 
   return <MatchScreen localTeamName={teamName} />
 }

@@ -2,22 +2,37 @@
   display: grid;
   grid-template-rows: 150px 1fr;
   align-items: start;
-  justify-items: center;
   height: 100vh;
   width: 100vw;
   background-color: #f9f9f9;
   overflow: hidden;
   padding-bottom: 5vh;
-  padding: 0 10vw;
   background-image: url("../../assets/background.png");
 }
 
-.logo {
-  height: 50px;
+.header {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: relative;
+  height: 80px;
+  background-color: transparent;
 }
 
-.matchLogo {
-  margin-top: 15px;
+.logoMatch {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 61px;
+  margin: 0 auto;
+}
+
+.exitButton {
+  margin-right: 50px;
+  margin-left: auto;
+  position: relative;
 }
 
 .exit-button {
@@ -55,6 +70,7 @@
 }
 
 .game-area {
+  padding: 0 10vw;
   display: grid;
   grid-template-columns: 355px 1fr;
   height: 100%;
@@ -65,15 +81,19 @@
   flex: 1;
   margin-right: 20px;
   background-color: #fff;
-  border-radius: 10px;
   padding: 15px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 0px 0px 20px;
 }
 
 .rankings h2 {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   margin-bottom: 15px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  line-height: 39px;
+  color: #1D1D1D;
 }
 
 .rankings ul {
@@ -81,51 +101,8 @@
   padding: 0;
 }
 
-.team {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.team:last-child {
-  margin-bottom: 0;
-}
-
-.team-icon {
-  font-size: 2rem;
-  margin-right: 10px;
-}
-
-.team-info {
-  flex: 1;
-}
-
-.team-name {
-  font-size: 20px;
-  color: #1D1D1D;
-  font-weight: 400;
-}
-
-.team-points {
-  font-size: 16px;
-  color: #777;
-}
-
-/* Medal Colors */
-.team-gold .team-icon {
-  color: gold;
-}
-
-.team-silver .team-icon {
-  color: silver;
-}
-
-.team-bronze .team-icon {
-  color: #cd7f32;
-}
-
-/* Pergunta */
-.question-area {
+/* Alternativa */
+.alternative-area {
   flex: 2;
   display: flex;
   flex-direction: column;
@@ -137,9 +114,8 @@
 }
 
 .box {
-  padding: 10px 40px;
+  padding: 16px 10px;
   border: 5px solid black;
-  border-radius: 0px 20px 0px 0px;
   font-family: 'Fredoka';
   font-size: 32px;
   font-weight: bold;
@@ -148,19 +124,7 @@
   background-color: white;
 }
 
-.question-box {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-.playArea {
+.play-area {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -168,6 +132,10 @@
 }
 
 .question-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 20px 0px 0px;
   display: flex;
   min-height: 45%;
   box-shadow: 8px 10px 0px rgba(0, 0, 0, 1);
@@ -177,6 +145,7 @@
 .question-text {
   font-size: 2rem;
   line-height: 38.72px;
+  color: #1D1D1D
 }
 
 /* Temporizador */
@@ -246,24 +215,6 @@
   border: 5px solid #765200;
 }
 
-.submit-button {
-  margin-top: 16px;
-  width: 250px;
-  height: 55px;
-  padding: 16px 64px;
-  border-radius: 20px;
-  border: 5px solid #00570A;
-  color: #00570A;
-  background-color: #13BB0A;
-  font-size: 20px;
-  line-height: 24.2px;
-  font-weight: 900 !important;
-  display: flex;
-  align-content: center;
-  justify-items: center;
-  align-items: center;
-}
-
 .alternative-btn.selected {
   border: 2px solid #000;
   background-color: #ddd;
@@ -284,8 +235,9 @@
 }
 
 .footer {
-  text-align: center;
+  text-align: left;
   padding: 10px;
-  background-color: #fff;
-  border-top: 2px solid #ddd;
+  background-color: transparent;
+  color: #1D1D1D;
+  padding: 20px 12vw;
 }

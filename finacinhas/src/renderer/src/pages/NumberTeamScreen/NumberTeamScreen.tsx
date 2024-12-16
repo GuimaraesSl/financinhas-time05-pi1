@@ -7,26 +7,23 @@ export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
   const navigate = useNavigate() // Hook para navegação
 
-  // Manipular mudança no Select
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setSelectedTeams(Number(event.target.value))
   }
 
-  // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/config-team', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
+      navigate('/config', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
     }
   }
 
-  // Navegar ao clicar no botão Sair
   const handleLogout = (): void => {
-    navigate('/') // Redireciona para a página inicial
+    navigate('/')
   }
 
   return (
     <div className="containerNumberTeamScreen">
-      <Header profileName="Jefferson" onLogout={() => handleLogout()} />
+      <Header profileName="Jefferson" onExit={() => handleLogout()} />
       <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">

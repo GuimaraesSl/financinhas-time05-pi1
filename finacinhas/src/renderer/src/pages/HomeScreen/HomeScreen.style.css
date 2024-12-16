@@ -6,9 +6,10 @@
   height: 100vh;
   width: 100vw;
   background-color: white;
+  background-image: url("../../assets/background.png");
 }
 
-.logo {
+.logoHome {
   margin-bottom: 15px;
   height: 140px;
   width: 668px;

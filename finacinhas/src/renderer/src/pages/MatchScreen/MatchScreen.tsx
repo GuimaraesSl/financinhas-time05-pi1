@@ -1,52 +1,74 @@
 import React, { useState, useEffect } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './MatchScreen.style.css'
-import ExitIcon from './components/ExitIcon'
-interface Team {
-  name: string
-  points: number
-  hasAnswered: boolean
-}
+import { useNavigate } from 'react-router-dom'
+import ExitButton from '@renderer/components/ExitButton/ExitButton'
+import Team from '@renderer/models/Team'
+import TeamRankingCard from './components/TeamRankingCard/TeamRankingCard'
+import { Button } from '@renderer/components/Button'
 
 interface Alternative {
   arg: string
 }
 
-interface Answear {
-  question: string
+interface Quest {
+  quest: string
   alternatives: Alternative[]
   correctAlternative: Alternative
   timeToRespond: number
 }
 
 interface Match {
-  name: string
+  code: string
   playingTeams: Team[]
-  answears: Answear[]
+  questions: Quest[]
 }
 
-const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => {
-  const [match, setMatch] = useState<Match | null>({
-    name: '123abc',
+const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) => {
+  const navigate = useNavigate()
+  const [match, setMatch] = useState<Match | null>(() => ({
+    code: '123abc',
     playingTeams: [
-      { name: 'Maçã', points: 40, hasAnswered: false },
-      { name: 'Água', points: 16, hasAnswered: false },
-      { name: 'Folha', points: 10, hasAnswered: false }
+      { value: 'maca', name: 'Maçã', points: 40, hasAnswered: false },
+      { value: 'agua', name: 'Água', points: 16, hasAnswered: false },
+      { value: 'folha', name: 'Folha', points: 10, hasAnswered: false }
     ],
-    answears: [
+    questions: [
       {
-        question: 'Qual é a capital da França?',
-        alternatives: [{ arg: 'Paris' }, { arg: 'Londres' }, { arg: 'Berlim' }, { arg: 'Roma' }],
-        correctAlternative: { arg: 'Paris' },
-        timeToRespond: 90 // segundos
+        quest: 'Por que é importante economizar dinheiro?',
+        alternatives: [
+          { arg: 'Para comprar mais brinquedos.' },
+          { arg: 'Para gastar com coisas que você quer, como videogames e roupas.' },
+          { arg: 'Para garantir que você tenha dinheiro quando precisar no futuro.' },
+          { arg: 'Para gastar todo o dinheiro de uma vez.' }
+        ],
+        correctAlternative: {
+          arg: 'Para garantir que você tenha dinheiro quando precisar no futuro.'
+        },
+        timeToRespond: 90
+      },
+      {
+        quest: 'Qual é a diferença entre necessidade e desejo?',
+        alternatives: [
+          { arg: 'Necessidade é o que você quer, e desejo é o que você precisa.' },
+          {
+            arg: 'Necessidade é algo essencial para a vida, e desejo é algo que você quer, mas não precisa.'
+          },
+          { arg: 'Necessidade é o que você compra, e desejo é o que você ganha de presente.' },
+          { arg: 'Necessidade e desejo são a mesma coisa.' }
+        ],
+        correctAlternative: {
+          arg: 'Necessidade é algo essencial para a vida, e desejo é algo que você quer, mas não precisa.'
+        },
+        timeToRespond: 90
       }
     ]
-  })
+  }))
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [timer, setTimer] = useState<number | null>(null)
   const [selectedAlternative, setSelectedAlternative] = useState<Alternative | null>(null) // Nova linha
 
-  const localTeam = match?.playingTeams.find((team) => team.name === localTeamName)
+  const localTeam = match?.playingTeams.find((team) => team.value === localTeamName)
 
   useEffect(() => {
     if (timer !== null && timer > 0) {
@@ -58,16 +80,22 @@ const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => 
   }, [timer])
 
   useEffect(() => {
-    setTimer(match!.answears[currentQuestionIndex].timeToRespond)
-    setSelectedAlternative(null) // Reseta a alternativa selecionada ao mudar de pergunta
+    setTimer(match!.questions[currentQuestionIndex].timeToRespond)
+    setSelectedAlternative(null)
   }, [currentQuestionIndex])
 
   const handleAnswer = (): void => {
-    const currentQuestion = match!.answears[currentQuestionIndex]
+    const currentQuestion = match!.questions[currentQuestionIndex]
 
-    if (!selectedAlternative) return // Proteção extra contra cliques sem seleção
+    if (!selectedAlternative) return
 
     const isCorrect = selectedAlternative.arg === currentQuestion.correctAlternative.arg
+
+    if (isCorrect) {
+      alert('Resposta Correta')
+    } else {
+      alert('Resposta Errada')
+    }
 
     const updatedTeams = match!.playingTeams.map((team) =>
       team.name === localTeamName
@@ -88,7 +116,7 @@ const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => 
   const handleEndOfQuestion = (): void => {
     setTimer(null) // Para o cronômetro
 
-    if (currentQuestionIndex < match!.answears.length - 1) {
+    if (currentQuestionIndex < match!.questions.length - 1) {
       setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
       setMatch({
         ...match!,
@@ -97,75 +125,44 @@ const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => 
     }
   }
 
-  const getTeamIcon = (teamName: string): JSX.Element => {
-    switch (teamName) {
-      case 'Maçã':
-        return <img src="/assets/icons/apple.svg" alt="Maçã" className="team-svg-icon" />
-      case 'Água':
-        return <img src="/assets/icons/water.svg" alt="Água" className="team-svg-icon" />
-      case 'Folha':
-        return <img src="/assets/icons/leaf.svg" alt="Folha" className="team-svg-icon" />
-      default:
-        return <img src="/assets/icons/default.svg" alt="Desconhecido" className="team-svg-icon" />
-    }
-  }
+  const currentQuestion = match?.questions[currentQuestionIndex]
 
-  const currentQuestion = match?.answears[currentQuestionIndex]
-
-  if (!match || !localTeam) return <p>Equipe não encontrada!</p>
-
-  const medalTypes = ['gold', 'silver', 'bronze']
-  const teamsWithMedals = match.playingTeams
-    .slice()
-    .sort((a, b) => b.points - a.points)
-    .map((team, index) => ({
-      ...team,
-      medal: index < 3 ? medalTypes[index] : 'none'
-    }))
+  const sortedTeams = match?.playingTeams.sort((a, b) => b.points - a.points)
 
   const alternativeColors = ['red', 'blue', 'green', 'yellow']
 
   return (
     <div className="matchScreenContainer">
       <header className="header">
-        <img src={logo} alt="Financinhas" className="logo matchLogo" />
+        <img src={logo} alt="Financinhas" className="logoMatch" />
         {/* TODO: Make logic in exit button. */}
-        <button className="exit-button">
-          SAIR <ExitIcon color="black" width={24} height={24} />
-        </button>
+        <ExitButton onClick={() => navigate('/')} className="exitButton" />
       </header>
       <main className="game-area">
         <aside className="rankings box">
           <h2>RANKINGS</h2>
-
           <ul>
-            {teamsWithMedals.map((team) => (
-              <li key={team.name} className={`team team-${team.medal}`}>
-                <div className="team-icon">{getTeamIcon(team.name)}</div>
-                <div className="team-info">
-                  <p className="team-name">Equipe {team.name}</p>
-                  <p className="team-points">{team.points} pontos</p>
-                </div>
-              </li>
+            {sortedTeams?.map((team, index) => (
+              <TeamRankingCard key={team.name} team={team} rank={index + 1} />
             ))}
           </ul>
         </aside>
 
-        <div className="playArea">
+        <div className="play-area">
           <div className="box question-div">
-            <p className="question-text">{currentQuestion?.question}</p>
+            <p className="question-text">{currentQuestion?.quest}</p>
             <div className="timer box">
               <span>
                 {timer !== null
                   ? `${Math.floor(timer / 60)
-                    .toString()
-                    .padStart(2, '0')}:${(timer % 60).toString().padStart(2, '0')}`
+                      .toString()
+                      .padStart(2, '0')}:${(timer % 60).toString().padStart(2, '0')}`
                   : '00:00'}
               </span>
             </div>
           </div>
 
-          <section className="box question-area">
+          <section className="box alternative-area">
             <span
               style={{
                 color: 'black',
@@ -180,9 +177,10 @@ const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => 
               {currentQuestion?.alternatives.map((alternative, index) => (
                 <button
                   key={index}
-                  className={`alternative-btn ${alternativeColors[index % alternativeColors.length]} ${selectedAlternative === alternative ? 'selected' : ''
-                    }`}
-                  onClick={() => setSelectedAlternative(alternative)} // Define a alternativa selecionada
+                  className={`alternative-btn ${alternativeColors[index % alternativeColors.length]} ${
+                    selectedAlternative === alternative ? 'selected' : ''
+                  }`}
+                  onClick={() => setSelectedAlternative(alternative)}
                   disabled={localTeam!.hasAnswered || timer === null}
                 >
                   <span className="alt-label">{String.fromCharCode(65 + index)}.</span>{' '}
@@ -190,18 +188,14 @@ const MatchScreen: React.FC<{ localTeamName: string }> = ({ localTeamName }) => 
                 </button>
               ))}
             </div>
-            <button
-              className="submit-button"
-              onClick={handleAnswer}
-              disabled={!selectedAlternative || localTeam!.hasAnswered || timer === null} // Botão só habilita se algo for selecionado
-            >
+            <Button onClick={handleAnswer} style={{ height: '60px' }}>
               {localTeam!.hasAnswered ? 'RESPONDIDO!' : 'RESPONDER'}
-            </button>
+            </Button>
           </section>
         </div>
       </main>
       <footer className="footer">
-        <p>Código da sala: {match.name}</p>
+        <p>Código da sala: {match?.code}</p>
       </footer>
     </div>
   )

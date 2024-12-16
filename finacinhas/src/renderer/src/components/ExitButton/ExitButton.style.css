@@ -1,0 +1,30 @@
+.logoutButtonFinancinhas {
+  height: 56px;
+  width: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f14c4c;
+  color: #570000;
+  border: 5px solid #570000;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.logoutButtonFinancinhas:hover {
+  transform: scale(1.05);
+}
+
+.logoutButtonFinancinhas img {
+  width: 24px;
+  height: 24px;
+  margin-left: 5px;
+}

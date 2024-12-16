@@ -1,0 +1,57 @@
+.team {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+  border: 5px solid #D9D9D9;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+}
+
+.team:last-child {
+  margin-bottom: 0;
+}
+
+
+.team-icon {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  margin-right: 10px;
+}
+
+.team-svg-icon {
+  width: 64px;
+  height: 64px;
+}
+
+.team-info {
+  flex: 1;
+}
+
+.team-name {
+  font-size: 20px;
+  color: #1D1D1D;
+  font-weight: 400;
+}
+
+.team-points {
+  font-size: 16px;
+  color: #777;
+}
+
+.team-medal {
+  position: absolute;
+  top: -6px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.medal-icon {
+  width: 40px;
+  height: 40px;
+}

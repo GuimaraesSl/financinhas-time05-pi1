@@ -1,27 +1,16 @@
 import { FC } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import profileIcon from '../../assets/iconeProfile.svg'
-import logoutIcon from '../../assets/line-md_log-out.svg'
 import './Header.style.css'
+import ExitButton from '../ExitButton/ExitButton'
 
 interface HeaderProps {
-  profileName: string
-  onLogout: () => void
+  className?: string
+  profileName?: string
+  onExit: () => void
 }
 
-const LogoutButton: FC<{ onClick: () => void }> = ({ onClick }) => (
-  <button
-    className="logoutButtonFinancinhas"
-    onClick={onClick}
-    aria-label="Sair do sistema"
-    title="Logout"
-  >
-    SAIR
-    <img src={logoutIcon} alt="Logout Icon" />
-  </button>
-)
-
-const Header: FC<HeaderProps> = ({ profileName = 'Usuário', onLogout }) => {
+const Header: FC<HeaderProps> = ({ profileName = 'Usuário', onExit }) => {
   return (
     <header className="headerFinancinhas">
       <div className="profileContainerFinancinhas">
@@ -30,7 +19,7 @@ const Header: FC<HeaderProps> = ({ profileName = 'Usuário', onLogout }) => {
       </div>
 
       <img src={logo} className="logoFinancinhas" alt="Logo do Sistema Financinhas" />
-      <LogoutButton onClick={onLogout} />
+      <ExitButton onClick={onExit} />
     </header>
   )
 }

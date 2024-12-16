@@ -1,8 +1,6 @@
 import React from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
-import HomeScreen from '../pages/HomeScreen/HomeScreen'
 import NumberTeamScreen from '../pages/NumberTeamScreen/NumberTeamScreen'
-import ChoiceScreen from '@renderer/pages/ChoiceScreen/ChoiceScreen'
 import MatchScreenWrapper from '@renderer/pages/MatchScreen/MatchScreenWrapper'
 import EnterRoomScreen from '@renderer/pages/EnterRoomScreen/EnterRoomScreen'
 import LoginScreen from '@renderer/pages/LoginScreen/LoginScreen'
@@ -10,6 +8,7 @@ import ProfileSelectScreen from '@renderer/pages/ProfileSelect/ProfileSelectScre
 import RegisterScreen from '@renderer/pages/RegisterScreen/RegisterScreen'
 import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
 import HomePage from '../pages/HomeScreen/HomeScreen'
+import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -33,16 +32,17 @@ const AppRoutes: React.FC = () => {
         {/* Rota para a tela de cadastro */}
         <Route path="/register" element={<RegisterScreen />} />
 
-        {/* Rota para a tela de cadastro */}
+        {/* Rota para a tela de selecionar sala */}
         <Route path="/enter" element={<EnterRoomScreen />} />
 
-        {/* Rota para a tela de cadastro */}
+        {/* Rota para a tela de selecionar time */}
         <Route path="/select-team" element={<SelectTeamScreen />} />
 
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/team" element={<NumberTeamScreen />} />
-        <Route path="/choiceScreen" element={<ChoiceScreen />} />
-        <Route path="/matchScreen/:teamName" element={<MatchScreenWrapper />} />
+        {/*Rota para tela de configuração do quiz*/}
+        <Route path="/config" element={<ConfigTeam />} />
+
+        {/* Rota para tela do jogo */}
+        <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />
       </Routes>
     </HashRouter>
   )
