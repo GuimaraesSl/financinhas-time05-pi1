@@ -4,6 +4,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #f9f9f9;
+  background-image: url("../../assets/background.png");
 }
 
 .headerSelectTeamScreen{
@@ -26,15 +27,6 @@
 
 .headerSelectTeamScreen .arrowIcon:hover {
   transform: scale(1.2) translateY(-50%);
-}
-
-.logo{
-  margin-top: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-
-  width: 100%;
 }
 
 .logoSelectTeamScreen{

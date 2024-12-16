@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-image: url("../../assets/background.png");
   height: 100vh;
   width: 100vw;
   background-color: #ffffff;
@@ -64,7 +65,7 @@
   width: 554px;
   max-width: 90%;
   padding: 30px;
-  background: #ffffff;
+  background: transparent;
   border: none; 
   box-shadow: none;
   box-sizing: border-box;

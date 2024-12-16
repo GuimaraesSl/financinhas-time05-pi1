@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './SelectTeamScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
@@ -6,6 +6,17 @@ import { useNavigate } from 'react-router-dom'
 
 const SelectTeamScreen: React.FC = () => {
   const navigate = useNavigate()
+  const [selectedTeam, setSelectedTeam] = useState<string>('')
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  const handleContinueToQuiz = () => {
+    if (selectedTeam) {
+      navigate(`/match-screen/${selectedTeam}`)
+    } else {
+      alert('Por favor, selecione uma equipe antes de continuar.')
+    }
+  }
+
   return (
     <div className="containerSelectTeamScreen">
       <header className="headerSelectTeamScreen">
@@ -19,24 +30,32 @@ const SelectTeamScreen: React.FC = () => {
       </header>
       <main className="mainSelectTeamScreen">
         <h2>Selecione a sua Equipe</h2>
-        <select name="teams" className="selectTeam" required>
+        <select
+          name="teams"
+          className="selectTeam"
+          required
+          value={selectedTeam}
+          onChange={(e) => setSelectedTeam(e.target.value)} // Atualiza o estado com o valor selecionado
+        >
           <option value="" className="optionTeamSelection">
             Selecionar Equipe
           </option>
-          <option value="team2" className="optionTeamSelection">
+          <option value="maca" className="optionTeamSelection">
             Equipe Maçã
           </option>
-          <option value="team3" className="optionTeamSelection">
+          <option value="agua" className="optionTeamSelection">
             Equipe Água
           </option>
-          <option value="team4" className="optionTeamSelection">
+          <option value="folha" className="optionTeamSelection">
             Equipe Folha
           </option>
-          <option value="team5" className="optionTeamSelection">
+          <option value="gato" className="optionTeamSelection">
             Equipe Gato
           </option>
         </select>
-        <button className="SelectTeamButton">CONTINUAR</button>
+        <button className="SelectTeamButton" onClick={handleContinueToQuiz}>
+          CONTINUAR
+        </button>
       </main>
     </div>
   )

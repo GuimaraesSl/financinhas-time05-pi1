@@ -1,0 +1,243 @@
+.matchScreenContainer {
+  display: grid;
+  grid-template-rows: 150px 1fr;
+  align-items: start;
+  height: 100vh;
+  width: 100vw;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding-bottom: 5vh;
+  background-image: url("../../assets/background.png");
+}
+
+.header {
+  padding-top: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: relative;
+  height: 80px;
+  background-color: transparent;
+}
+
+.logoMatch {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 61px;
+  margin: 0 auto;
+}
+
+.exitButton {
+  margin-right: 50px;
+  margin-left: auto;
+  position: relative;
+}
+
+.exit-button {
+  /* Inside Organization */
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  /* Positiion */
+  position: absolute;
+  width: 200px;
+  height: 56px;
+  top: 50px;
+  right: 200px;
+
+  /* Styles */
+  background-color: #ff5c5c;
+  color: black;
+  padding: 16px 16px 16px 32px;
+  border-radius: 20px;
+  cursor: pointer;
+  line-height: 24.2px;
+  border: 5px solid black;
+  font-family: 'Fredoka';
+  font-weight: 500;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 8px 10px 0px rgba(0, 0, 0, 1);
+}
+
+.exit-button:hover {
+  background-color: #e53935;
+}
+
+.game-area {
+  padding: 0 10vw;
+  display: grid;
+  grid-template-columns: 355px 1fr;
+  height: 100%;
+  width: 100%;
+}
+
+.rankings {
+  flex: 1;
+  margin-right: 20px;
+  background-color: #fff;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 20px 0px 0px 20px;
+}
+
+.rankings h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  font-family: 'Fredoka', sans-serif;
+  font-weight: 500;
+  line-height: 39px;
+  color: #1D1D1D;
+}
+
+.rankings ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Alternativa */
+.alternative-area {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-evenly;
+  justify-content: center;
+  min-height: 40%;
+  border-radius: 0px 0px 20px 0px !important;
+}
+
+.box {
+  padding: 16px 10px;
+  border: 5px solid black;
+  font-family: 'Fredoka';
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 10px 0px rgba(0, 0, 0, 1);
+  background-color: white;
+}
+
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0px 20px;
+}
+
+.question-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px 20px 0px 0px;
+  display: flex;
+  min-height: 45%;
+  box-shadow: 8px 10px 0px rgba(0, 0, 0, 1);
+  position: relative;
+}
+
+.question-text {
+  font-size: 2rem;
+  line-height: 38.72px;
+  color: #1D1D1D
+}
+
+/* Temporizador */
+.timer {
+  font-size: 2.25rem;
+  font-weight: 900;
+  max-width: 200px;
+  background-color: #9B9B9B;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1D1D1D;
+  border-radius: 10px;
+  max-height: 55px;
+  position: absolute;
+  top: 99%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 1);
+}
+
+/* Alternativas */
+.alternatives {
+  font: "Fredoka";
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.alternative-btn {
+  flex: 1 1 calc(50% - 10px);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #eee;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.alternative-btn.red {
+  background-color: #ff4646;
+  color: #570000;
+  border: 5px solid #570000;
+}
+
+.alternative-btn.blue {
+  background-color: #596FFF;
+  color: #000D61;
+  border: 5px solid #000D61;
+}
+
+.alternative-btn.green {
+  background-color: #00BC67;
+  color: #004425;
+  border: 5px solid #004425;
+}
+
+.alternative-btn.yellow {
+  background-color: #FFC300;
+  color: #765200;
+  border: 5px solid #765200;
+}
+
+.alternative-btn.selected {
+  border: 2px solid #000;
+  background-color: #ddd;
+}
+
+.alt-label {
+  font-size: 36px;
+  font-weight: 900;
+}
+
+.alternative-btn:hover {
+  filter: brightness(0.9);
+}
+
+.alternative-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer {
+  text-align: left;
+  padding: 10px;
+  background-color: transparent;
+  color: #1D1D1D;
+  padding: 20px 12vw;
+}

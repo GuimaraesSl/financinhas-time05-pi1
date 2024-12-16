@@ -55,7 +55,7 @@ const ConfigTeam: FC = () => {
 
   return (
     <div className="containerConfigTeam">
-      <Header profileName="Jefferson" onLogout={() => handleLogout()} />
+      <Header profileName="Jefferson" onExit={() => handleLogout()} />
       <main className="mainConfigTeam">
         <h1 className="titleConfigTeam">Equipes</h1>
         <div className="rankingContainer">
