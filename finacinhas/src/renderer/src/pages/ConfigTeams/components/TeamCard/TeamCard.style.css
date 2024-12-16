@@ -1,0 +1,73 @@
+.teamCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  height: 90px;
+  align-items: center;
+  padding: 5px;
+  margin-bottom: 10px;
+  margin-right: 20px;
+}
+
+.teamContent {
+  background-color: #f0f0f0;
+  border: 4px solid #BEBEBE;
+  border-radius: 10px;
+  flex: 10;
+  display: flex;
+  align-items: center;
+  padding: 15px 15px;
+  height: 100%;
+}
+
+.deleteButtonContainer {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 10%;
+}
+
+.deleteButton {
+  background-color: #F14C4C;
+  border: 4px solid #570000;
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  border-radius: 10px;
+  cursor: pointer;
+ 
+}
+
+.deleteButton:hover {
+  transform: scale(1.03);
+}
+
+.teamRow {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+.interColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.teamIcon {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.teamName {
+  font-size: 18px;
+  color: #000;
+}
+
+.teamPoints {
+  font-size: 14px;
+  color: #878787;
+}
+
+

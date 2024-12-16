@@ -1,8 +1,6 @@
-import React, { FC, useState } from 'react'
-import { useNavigate } from 'react-router-dom' // Importar useNavigate
-import logo from '../../assets/Logo-Subtitle.svg'
-import profileIcon from '../../assets/iconeProfile.svg'
-import logoutIcon from '../../assets/line-md_log-out.svg'
+import { FC, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import Header from '../../components/Header/Header'
 import './NumberTeamScreen.style.css'
 
 export const NumberTeamScreen: FC = () => {
@@ -17,7 +15,7 @@ export const NumberTeamScreen: FC = () => {
   // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/game-setup', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
+      navigate('/config-team', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
     }
   }
 
@@ -28,30 +26,15 @@ export const NumberTeamScreen: FC = () => {
 
   return (
     <div className="containerNumberTeamScreen">
-      <header className="headerNumberTeamScreen">
-        <div className="profileContainerNumberTeamScreen">
-          <img src={profileIcon} className="profileNumberTeamScreen" alt="Profile Icon" />
-          <p className="profileNameNumberTeamScreen">Prof. Nome do Usuário</p>
-        </div>
-        <div className="logoContainerNumberTeamScreen">
-          <img src={logo} className="logoNumberTeamScreen" alt="logo" />
-        </div>
-        <div className="logoutContainerNumberTeamScreen">
-          <button className="logoutButton" onClick={handleLogout}>
-            Sair
-            <img src={logoutIcon} className="logoutIconNumberTeamScreen" alt="Logout Icon" />
-          </button>
-        </div>
-      </header>
-
-      <main className="mainNumberTeamScreen">
+      <Header profileName="Jefferson" onLogout={() => handleLogout()} />
+      <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">
           <select id="teamSelect" className="selectNumberTeamScreen" onChange={handleSelectChange}>
             <option value="" className="labelNumberTeamScreen">
               Selecionar quantidade
             </option>
-            {[...Array(10)].map((_, index) => (
+            {[...Array(5)].map((_, index) => (
               <option key={index + 1} value={index + 1}>
                 {index + 1}
               </option>

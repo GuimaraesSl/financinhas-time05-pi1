@@ -7,7 +7,7 @@ import ProfileSelectScreen from './pages/ProfileSelect/ProfileSelectScreen'
 import LoginScreen from './pages/LoginScreen/LoginScreen'
 import EnterRoomScreen from './pages/EnterRoomScreen/EnterRoomScreen'
 import SelectTeamScreen from './pages/SelectTeam/SelectTeamScreen'
-
+import ConfigTeam from './pages/ConfigTeams/ConfigTeams'
 const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -35,6 +35,9 @@ const App: React.FC = () => {
 
         {/* Rota para a tela de cadastro */}
         <Route path="/select-team" element={<SelectTeamScreen />} />
+        
+        {/* Rota para a tela de Configuração de Equipes */}
+        <Route path="/config-team" element={<ConfigTeam />} />
       </Routes>
     </BrowserRouter>
   )
