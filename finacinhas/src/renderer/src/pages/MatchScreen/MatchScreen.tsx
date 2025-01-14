@@ -168,7 +168,7 @@ const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) =>
                 color: 'black',
                 textAlign: 'center',
                 fontSize: '24px',
-                marginBottom: '16px'
+                marginBottom: '10px'
               }}
             >
               ALTERNATIVAS
@@ -188,7 +188,7 @@ const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) =>
                 </button>
               ))}
             </div>
-            <Button onClick={handleAnswer} style={{ height: '60px' }}>
+            <Button onClick={handleAnswer} style={{ height: '60px', marginBottom: '20px' }}>
               {localTeam!.hasAnswered ? 'RESPONDIDO!' : 'RESPONDER'}
             </Button>
           </section>
