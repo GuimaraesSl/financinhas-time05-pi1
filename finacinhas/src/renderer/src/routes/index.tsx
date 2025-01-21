@@ -10,6 +10,7 @@ import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
+import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -45,8 +46,13 @@ const AppRoutes: React.FC = () => {
         {/* Rota para tela do jogo */}
         <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />
 
+<<<<<<< HEAD
         {/* Rota para tela de seleção de perguntas */}
         <Route path="/select-questions" element={<SelectQuestionsScreen />} />
+=======
+        {/* Rota para a tela edit screen */}
+        <Route path="/edit-questions" element={<EditQuestionScreen />} />
+>>>>>>> 904e47c4b028f84c9ede30c3c6b1afe8864116f5
       </Routes>
     </HashRouter>
   )
