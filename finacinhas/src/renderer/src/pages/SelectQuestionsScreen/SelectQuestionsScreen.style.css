@@ -49,6 +49,20 @@
   
     width: 100%;
 }
+
+.headerSelectQuestionsScreen .arrowIcon {
+    position: absolute;
+    left: 70px;
+    top: 10%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .headerSelectQuestionsScreen .arrowIcon:hover {
+    transform: scale(1.2) translateY(-50%);
+  }
+
 .profileButton{
     padding: 10px 40px;
     margin-top: 15px;
@@ -65,3 +79,7 @@
     text-transform: uppercase;
     transition: transform 0.2s ease;
   } 
+  .logoSelectQuestionsScreen {
+    width: 350px;
+    height: 71.89px;
+  }

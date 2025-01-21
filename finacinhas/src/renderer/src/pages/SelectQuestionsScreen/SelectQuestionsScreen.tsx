@@ -2,6 +2,7 @@ import React from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import '../SelectQuestionsScreen/SelectQuestionsScreen.style.css'
 import { useNavigate } from 'react-router-dom'
+import { MdArrowBack } from 'react-icons/md'
 
 const SelectQuestionsScreen: React.FC = () => {
   const navigate = useNavigate()
@@ -9,6 +10,12 @@ const SelectQuestionsScreen: React.FC = () => {
   return (
     <div className="containerSelectQuestionsScreen">
       <header className="headerSelectQuestionsScreen">
+      <MdArrowBack
+          onClick={() => navigate('/number-teams')}
+          size={45}
+          color="#000"
+          className="arrowIcon"
+        />
         <img src={logo} className="logoSelectQuestionsScreen" alt="logo" />
       </header>
       <main className="mainProfileSelectScreen">
