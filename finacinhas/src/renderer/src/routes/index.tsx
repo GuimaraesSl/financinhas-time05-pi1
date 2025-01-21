@@ -7,7 +7,7 @@ import LoginScreen from '@renderer/pages/LoginScreen/LoginScreen'
 import ProfileSelectScreen from '@renderer/pages/ProfileSelect/ProfileSelectScreen'
 import RegisterScreen from '@renderer/pages/RegisterScreen/RegisterScreen'
 import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
-import HomePage from '../pages/SelectQuestionsScreen/SelectQuestionsScreen'
+import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 
