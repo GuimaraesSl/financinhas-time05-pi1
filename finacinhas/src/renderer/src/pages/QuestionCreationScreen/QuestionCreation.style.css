@@ -1,0 +1,214 @@
+.containerQuestionScreen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../../assets/background.png");
+  height: 100vh;
+  width: 100vw;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+.headerQuestionScreen { 
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+.headerQuestionScreen .arrowIcon {
+  position: absolute;
+  left: 70px;
+  top: 10%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.headerQuestionScreen .arrowIcon:hover {
+  transform: scale(1.2) translateY(-50%);
+}
+.logoQuestionScreen {
+  width: 350px;
+  height: 71.89px;
+}
+.mainQuestionScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  width: 100%;
+}
+.titleQuestionScreen {
+  color: #000000;
+  font-family: 'Fredoka';
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.formQuestionScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 1120px;
+  max-width: 100%;
+  background: transparent;
+  border: none; 
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.inputField {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 3px;
+}
+.inputField label {
+  font-family: 'Fredoka';
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.textareaQuestion {
+  width: 100%;
+  height: 144px;
+  padding: 10px;
+  font-family: 'Fredoka';
+  font-size: 20px;
+  border: 3px solid #000000;
+  border-radius: 20px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.textareaJustification {
+  width: 100%;
+  height: 120px;
+  padding: 10px;
+  font-family: 'Fredoka';
+  font-size: 20px;
+  border: 3px solid #000000;
+  border-radius: 20px;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.inputFieldsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 20px;
+}
+.buttonSave {
+  padding: 10px 40px;
+  margin-top: 20px;
+  background-color: #13bb0a;
+  color: #00570a;
+  border: 5px solid #00570a;
+  border-radius: 20px;
+  font-family: 'Fredoka';
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+.buttonSave:hover {
+  transform: scale(1.05);
+}
+.buttonCancel {
+  padding: 10px 40px;
+  margin-top: 20px;
+  background-color: #FF4646;
+  color: #570000;
+  border: 5px solid #570000;
+  border-radius: 20px;
+  font-family: 'Fredoka';
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+.buttonCancel:hover {
+  transform: scale(1.05);
+}
+.buttonEditQuestionScreen:hover {
+  transform: scale(1.05);
+}
+.linkEditQuestionScreen {
+  color: #1D1D1D;
+  font-size: 24px;
+  text-decoration: underline;
+  font-family: 'Fredoka', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+}
+.linkEditQuestionScreen:hover {
+  transform: scale(1.03);
+}
+.react-confirm-alert-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+.custom-ui {
+  font-family: 'Fredoka', sans-serif;
+  color: black;
+  border-radius: 20px;
+  width: 620px;
+  height: 237px;
+  border: 5px solid #000000;
+  background: #fff;
+  box-shadow: 10px 8px 0px rgba(0, 0, 0, 1);
+  position: relative;
+  text-align: center;
+}
+.custom-ui h1 {
+  margin-top: 10px;
+  font-weight: bold;
+}
+.custom-ui p {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+.custom-ui .buttonGroup {
+  display: flex;
+  justify-content: space-around;
+}
+.custom-ui .buttonGroup button {
+  background-color: #FF4646;
+  color: #570000;
+  border: 5px solid #570000;
+  border-radius: 20px;
+  font-family: 'Fredoka', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 13px 20px;
+  transition: transform 0.2s ease-in-out;
+}
+.custom-ui .buttonGroup button:hover {
+  transform: scale(1.05);
+}
+.closeButton {
+  position: absolute;
+  color: #FF4646;
+  right: 10px;
+  top: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.closeButton:hover {
+  transform: scale(1.03);
+}
