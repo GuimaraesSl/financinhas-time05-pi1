@@ -46,13 +46,13 @@ const AppRoutes: React.FC = () => {
         {/* Rota para tela do jogo */}
         <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />
 
-<<<<<<< HEAD
+
         {/* Rota para tela de seleção de perguntas */}
         <Route path="/select-questions" element={<SelectQuestionsScreen />} />
-=======
+
         {/* Rota para a tela edit screen */}
         <Route path="/edit-questions" element={<EditQuestionScreen />} />
->>>>>>> 904e47c4b028f84c9ede30c3c6b1afe8864116f5
+
       </Routes>
     </HashRouter>
   )
