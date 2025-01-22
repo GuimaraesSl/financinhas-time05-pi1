@@ -19,7 +19,7 @@ const TeacherQuestionCreationScreen: React.FC = () => {
         <img src={logo} className="logoTeacherQuestionScreen" alt="logo" />
       </header>
       <main className="mainTeacherQuestionScreen">
-        <div className="resgisteredQuestions">
+        <div className="registeredQuestions">
           <div className="sectionHeader">
             <h2 className="titleResgiteredQuestion">SUAS PERGUNTAS CADASTRADAS</h2>
             <button className="buttonAddQuestion" onClick={() => navigate('/question-creation')}>ADICIONAR PERGUNTA</button>
@@ -39,6 +39,14 @@ const TeacherQuestionCreationScreen: React.FC = () => {
               question={{
                 id: 2,
                 question: 'Pré definida 1',
+                answer: 'Pré definida',
+                justification: 'Pré definida'
+              }}
+            ></QuestionCard>
+            <QuestionCard
+              question={{
+                id: 3,
+                question: 'Pré definida 2',
                 answer: 'Pré definida',
                 justification: 'Pré definida'
               }}

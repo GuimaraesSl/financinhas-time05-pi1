@@ -33,7 +33,7 @@ const EditQuestion: React.FC = () => {
           <div className="buttonGroup">
             <button
               onClick={() => {
-                navigate('/config')
+                navigate('/teacher-question')
                 onClose()
               }}
             >
@@ -54,7 +54,7 @@ const EditQuestion: React.FC = () => {
     }
 
     console.log('Question edited successfully')
-    navigate('/questions')
+    navigate('/teacher-question')
   }
 
   return (

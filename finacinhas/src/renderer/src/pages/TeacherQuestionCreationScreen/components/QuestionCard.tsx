@@ -2,6 +2,7 @@ import React from 'react';
 import EditIcon from '../../../assets/edit-icon.svg';
 import DeleteIcon from '../../../assets/delete-icon.svg';
 import IconeChat from '../../../assets/icon-chat.svg';
+import { useNavigate } from 'react-router-dom';
 
 interface Question {
   id: number;
@@ -16,7 +17,8 @@ interface QuestionCardProps {
   onEdit?: (id: number) => void;
 }
 
-const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete, onEdit }) => {
+const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete}) => {
+  const navigate = useNavigate();
   return (
     <div style={styles.card}>
       <div style={styles.content}>
@@ -27,7 +29,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete, onEdit 
         </div>
       </div>
       <div style={styles.actions}>
-        <button style={styles.editButton} onClick={() => onEdit && onEdit(question.id)}>
+        <button style={styles.editButton} onClick={() => navigate('/edit-questions')}>
           <img src={EditIcon} alt="Ícone lápis" />
         </button>
         <button style={styles.deleteButton} onClick={() => onDelete && onDelete(question.id)}>
