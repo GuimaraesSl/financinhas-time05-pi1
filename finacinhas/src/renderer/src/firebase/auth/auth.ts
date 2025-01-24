@@ -6,7 +6,8 @@ import {
   UserCredential
 } from 'firebase/auth'
 import { auth } from '../firebase'
-import { saveProfessorData } from '../service/service'
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../firebase'
 
 export const createUser = async (email: string, password: string, name: string): Promise<User> => {
   const userCredential = await createUserWithEmailAndPassword(auth, email, password)
@@ -33,10 +34,21 @@ export const signIn = async (email: string, password: string): Promise<UserCrede
 
 export const signOut = async (): Promise<void> => {
   try {
-    await auth.signOut()  
+    await auth.signOut()
     console.log('User signed out successfully')
   } catch (error) {
     console.error('Error during sign out:', error)
     throw error
   }
+}
+
+export const saveProfessorData = async (uid: string, name: string): Promise<void> => {
+  const professorRef = doc(db, 'professor', uid)
+
+  await setDoc(professorRef, {
+    nome: name,
+    createdAt: new Date()
+  })
+
+  console.log('Dados do professor salvos com sucesso no Firestore.')
 }

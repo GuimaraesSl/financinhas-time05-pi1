@@ -1,11 +1,17 @@
 {
+  "compilerOptions": {
+    "lib": ["ES2020", "DOM"], // Inclui funcionalidades modernas de JS e APIs de DOM
+    "types": ["node", "jest"], // Inclui definições de tipos para Node.js
+    "esModuleInterop": true, // Resolve problemas de import/export entre CommonJS e ES Modules
+    "allowSyntheticDefaultImports": true, // Permite importar pacotes com default exports
+    "baseUrl": ".",
+    "paths": {
+      "@renderer/*": ["src/renderer/*"]
+    }
+  },
   "files": [],
   "references": [
-    {
-      "path": "./tsconfig.node.json"
-    },
-    {
-      "path": "./tsconfig.web.json"
-    }
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.web.json" }
   ]
 }
