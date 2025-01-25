@@ -9,7 +9,7 @@ export const NumberTeamScreen: FC = () => {
   const [profileName, setProfileName] = useState<string | null>(null)
   const navigate = useNavigate() // Hook para navegação
 
-  const { currentUser, loading } = useAuth()
+  const { currentUser, logout } = useAuth()
 
   useEffect(() => {
     if (currentUser) {
@@ -27,8 +27,10 @@ export const NumberTeamScreen: FC = () => {
     }
   }
 
-  const handleLogout = (): void => {
+  const handleLogout = async (): Promise<void> => {
+    await logout()
     navigate('/')
+    alert(currentUser)
   }
 
   return (

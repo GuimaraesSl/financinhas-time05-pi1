@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { auth } from '../../firebase/firebase'
-import { onAuthStateChanged, User,updateProfile } from 'firebase/auth'
+import { onAuthStateChanged, User,updateProfile, signOut} from 'firebase/auth'
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
 interface AuthContextType {
@@ -8,6 +8,7 @@ interface AuthContextType {
   userLoggedIn: boolean
   loading: boolean
   setDisplayName: (nameUser: string) => Promise<void>
+  logout: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -30,6 +31,16 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
       } catch (error) {
         console.error(error)
       }}}
+      
+  const logout = async () => {
+        try {
+          await signOut(auth) 
+          setCurrentUser(null) 
+          setUserLoggedIn(false) 
+        } catch (error) {
+          console.error(error)
+        }
+      }
 
       useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -51,7 +62,8 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     currentUser,
     userLoggedIn,
     loading,
-    setDisplayName
+    setDisplayName,
+    logout,
   }
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
