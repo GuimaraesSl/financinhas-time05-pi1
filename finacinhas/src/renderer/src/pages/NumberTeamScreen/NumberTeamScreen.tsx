@@ -1,11 +1,21 @@
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import './NumberTeamScreen.style.css'
+import { useAuth} from "../../contexts/authContext/index"
 
 export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
+  const [profileName, setProfileName] = useState<string | null>(null)
   const navigate = useNavigate() // Hook para navegação
+
+  const { currentUser, loading } = useAuth()
+
+  useEffect(() => {
+    if (currentUser) {
+      setProfileName(currentUser.displayName || 'Usuário')
+    }
+  }, [currentUser])
 
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>): void => {
     setSelectedTeams(Number(event.target.value))
@@ -23,7 +33,7 @@ export const NumberTeamScreen: FC = () => {
 
   return (
     <div className="containerNumberTeamScreen">
-      <Header profileName="Jefferson" onExit={() => handleLogout()} />
+      <Header profileName={profileName || 'Usuário'} onExit={() => handleLogout()} />
       <main>
         <h1 className="titleNumberTeamScreen">Quantas Equipes irão jogar?</h1>
         <div className="selectContainerNumberTeamScreen">

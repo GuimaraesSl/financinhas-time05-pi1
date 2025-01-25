@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { auth } from '../../firebase/firebase'
-import { onAuthStateChanged, User } from 'firebase/auth'
+import { onAuthStateChanged, User,updateProfile } from 'firebase/auth'
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react'
 
 interface AuthContextType {
   currentUser: User | null
   userLoggedIn: boolean
   loading: boolean
+  setDisplayName: (nameUser: string) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -20,25 +21,37 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setCurrentUser(user)
-        setUserLoggedIn(true)
-      } else {
-        setCurrentUser(null)
-        setUserLoggedIn(false)
-      }
-      setLoading(false)
-    })
+  const setDisplayName = async (name: string) => {
+    if (currentUser) {
+      try {
+        await updateProfile(currentUser, { displayName: name })
+        
+        setCurrentUser({ ...currentUser, displayName: name })
+      } catch (error) {
+        console.error(error)
+      }}}
 
-    return unsubscribe
-  }, [])
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          if (user) {
+            setCurrentUser(user)
+            setUserLoggedIn(true)
+          } else {
+            setCurrentUser(null)
+            setUserLoggedIn(false)
+          }
+          setLoading(false)
+        })
+    
+        return unsubscribe
+      }, [])
+    
 
   const value: AuthContextType = {
     currentUser,
     userLoggedIn,
-    loading
+    loading,
+    setDisplayName
   }
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>
