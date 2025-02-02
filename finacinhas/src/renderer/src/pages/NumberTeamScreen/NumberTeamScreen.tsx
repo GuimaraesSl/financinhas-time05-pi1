@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../../components/Header/Header'
 import './NumberTeamScreen.style.css'
-import { useAuth} from "../../contexts/authContext/index"
+import { useAuth } from '../../contexts/authContext/index'
 
 export const NumberTeamScreen: FC = () => {
   const [selectedTeams, setSelectedTeams] = useState<number | null>(null)
@@ -30,7 +30,7 @@ export const NumberTeamScreen: FC = () => {
   const handleLogout = async (): Promise<void> => {
     await logout()
     navigate('/')
-    alert(currentUser)
+    alert('Usuário Desconectado')
   }
 
   return (
