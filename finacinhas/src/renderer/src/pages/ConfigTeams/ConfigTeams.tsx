@@ -1,9 +1,10 @@
-import { FC, useState, useCallback } from 'react'
+import { FC, useState, useCallback, useEffect } from 'react'
 import Header from '../../components/Header/Header'
 import './ConfigTeams.style.css'
 import TeamCard from './components/TeamCard/TeamCard'
 import Mais from '../../assets/icon+.svg'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { useAuth } from '@renderer/contexts/authContext'
 
 export interface Team {
   name: string
@@ -11,15 +12,23 @@ export interface Team {
 }
 
 const ConfigTeam: FC = () => {
+  const { currentUser, logout } = useAuth()
+  const [profileName, setProfileName] = useState<string | null>(null)
+  const location = useLocation()
+  const quantTeams = location.state?.teams
   const maxTeams = 5
-  const [teams, setTeams] = useState<Team[]>([
-    { name: 'Equipe 1', points: 0 },
-    { name: 'Equipe 2', points: 0 },
-    { name: 'Equipe 3', points: 0 },
-    { name: 'Equipe 4', points: 0 }
-  ])
+  const [teams, setTeams] = useState<Team[]>(() => {
+    return Array.from({ length: quantTeams }, (_, i) => ({
+      name: `Equipe ${i + 1}`,
+      points: 0
+    }))
+  })
+  useEffect(() => {
+    if (currentUser) {
+      setProfileName(currentUser.displayName || 'Usuário')
+    }
+  }, [currentUser])
 
-  // Função para adicionar uma equipe
   const handleAddTeam = useCallback(() => {
     if (teams.length < maxTeams) {
       const nextTeamNumber = teams.length + 1
@@ -30,7 +39,6 @@ const ConfigTeam: FC = () => {
     }
   }, [teams])
 
-  // Função para excluir uma equipe
   const handleDeleteTeam = useCallback(
     (index: number): void => {
       if (teams.length > 1) {
@@ -43,19 +51,19 @@ const ConfigTeam: FC = () => {
   )
   const navigate = useNavigate()
 
-  // Navegar ao clicar no botão Continuar
   const handleContinue = (): void => {
-    navigate('/') // Redireciona para a tela de configuração do jogo
+    navigate('/')
   }
 
-  // Navegar ao clicar no botão Sair
-  const handleLogout = (): void => {
-    navigate('/') // Redireciona para a página inicial
+  const handleLogout = async (): Promise<void> => {
+    await logout()
+    navigate('/')
+    alert('Usuário Desconectado')
   }
 
   return (
     <div className="containerConfigTeam">
-      <Header profileName="Jefferson" onExit={() => handleLogout()} />
+      <Header profileName={profileName || 'Usuário'} onExit={() => handleLogout()} />
       <main className="mainConfigTeam">
         <h1 className="titleConfigTeam">Equipes</h1>
         <div className="rankingContainer">
