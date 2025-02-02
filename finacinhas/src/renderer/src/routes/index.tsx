@@ -9,6 +9,7 @@ import RegisterScreen from '@renderer/pages/RegisterScreen/RegisterScreen'
 import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
+import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 
 const AppRoutes: React.FC = () => {
@@ -44,6 +45,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para tela do jogo */}
         <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />
+
+        {/* Rota para tela de seleção de perguntas */}
+        <Route path="/select-questions" element={<SelectQuestionsScreen />} />
 
         {/* Rota para a tela edit screen */}
         <Route path="/edit-questions" element={<EditQuestionScreen />} />
