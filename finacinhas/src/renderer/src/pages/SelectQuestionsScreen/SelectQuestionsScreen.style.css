@@ -46,7 +46,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-  
+
     width: 100%;
 }
 
@@ -58,7 +58,7 @@
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
   }
-  
+
   .headerSelectQuestionsScreen .arrowIcon:hover {
     transform: scale(1.2) translateY(-50%);
   }
@@ -70,7 +70,7 @@
     color: #00570A;
     border: 5px solid #00570A;
     border-radius: 20px;
-    width: 553px;
+    width: 558px;
     font-family: 'Fredoka', sans-serif;
     font-size: 30px;
     font-weight: bold;
@@ -78,7 +78,8 @@
     box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
     text-transform: uppercase;
     transition: transform 0.2s ease;
-  } 
+  }
+
   .logoSelectQuestionsScreen {
     width: 350px;
     height: 71.89px;

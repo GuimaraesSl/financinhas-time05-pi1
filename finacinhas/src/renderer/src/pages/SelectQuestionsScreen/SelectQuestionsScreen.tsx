@@ -10,7 +10,7 @@ const SelectQuestionsScreen: React.FC = () => {
   return (
     <div className="containerSelectQuestionsScreen">
       <header className="headerSelectQuestionsScreen">
-      <MdArrowBack
+        <MdArrowBack
           onClick={() => navigate('/number-teams')}
           size={45}
           color="#000"
@@ -20,11 +20,11 @@ const SelectQuestionsScreen: React.FC = () => {
       </header>
       <main className="mainProfileSelectScreen">
         <h2 className="titlePage">Você deseja usar as nossas perguntas?</h2>
-        <button onClick={() => navigate('/login')} className="profileButton">
-        VER PERGUNTAS PRÉ-DEFINIDAS
+        <button onClick={() => navigate('/config')} className="profileButton">
+          USAR PERGUNTAS PRÉ-DEFINIDAS
         </button>
-        <button onClick={() => navigate('/login')} className="profileButton">
-        ADICIONAR OUTRAS PERGUNTAS
+        <button onClick={() => navigate('/edit-questions')} className="profileButton">
+          PERSONALIZAR PERGUNTAS
         </button>
       </main>
     </div>
