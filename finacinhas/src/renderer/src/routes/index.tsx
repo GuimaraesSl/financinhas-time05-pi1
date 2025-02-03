@@ -11,6 +11,8 @@ import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
+import TeacherQuestionCreationScreen from '@renderer/pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
+import QuestionCreation from '@renderer/pages/AddQuestionScreen/QuestionCreation'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -30,6 +32,12 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para a tela de número de equipes */}
         <Route path="/number-teams" element={<NumberTeamScreen />} />
+
+        {/* Rota para a tela de ver as perguntas */}
+        <Route path="/teacher-question" element={<TeacherQuestionCreationScreen />} />
+
+        {/* Rota para a tela de adição de perguntas */}
+        <Route path="/question-creation" element={<QuestionCreation />} />
 
         {/* Rota para a tela de cadastro */}
         <Route path="/register" element={<RegisterScreen />} />

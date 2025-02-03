@@ -23,7 +23,7 @@ export const NumberTeamScreen: FC = () => {
 
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/select-questions', { state: { teams: selectedTeams } }) // Redireciona para a tela de configuração do jogo
+      navigate('/select-questions', { state: { teams: selectedTeams } })
     }
   }
 

@@ -1,15 +1,15 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import './EditQuestion.style.css'
+import './QuestionCreation.style.css'
 import InputField from '../../components/InputField/InputField'
 import logo from '../../assets/Logo-Subtitle.svg'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { MdClose } from 'react-icons/md'
 
-const EditQuestion: React.FC = () => {
-  const navigate = useNavigate()
 
+const QuestionCreation: React.FC = () => {
+  const navigate = useNavigate()
   const [question, setQuestion] = React.useState('')
   const [answer, setAnswer] = React.useState('')
   const [wrongAnswer1, setWrongAnswer1] = React.useState('')
@@ -44,27 +44,23 @@ const EditQuestion: React.FC = () => {
       )
     })
   }
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault()
-
     if (!question || !answer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3 || !justification) {
       alert('Por favor, preencha todos os campos!')
       return
     }
-
-    console.log('Question edited successfully')
+    console.log('Question created successfully')
     navigate('/teacher-question')
   }
-
   return (
-    <div className="containerEditQuestionScreen">
-      <header className="headerEditQuestionScreen">
-        <img src={logo} className="logoEditQuestionScreen" alt="Logo Financinhas" />
+    <div className="containerQuestionScreen">
+      <header className="headerQuestionScreen">
+        <img src={logo} className="logoQuestionScreen" alt="Logo Financinhas" />
       </header>
-      <main className="mainEditQuestionScreen">
-        <h1 className="titleEditQuestionScreen">EDITAR PERGUNTA</h1>
-        <form className="formEditQuestionScreen" onSubmit={handleSubmit}>
+      <main className="mainQuestionScreen">
+        <h1 className="titleQuestionScreen">ADICIONAR PERGUNTA</h1>
+        <form className="formQuestionScreen" onSubmit={handleSubmit}>
           <div className="inputField">
             <InputField
               id="question"
@@ -72,11 +68,7 @@ const EditQuestion: React.FC = () => {
               label="Pergunta"
               type="text"
               value={question}
-              onChange={(e) => {
-                setQuestion(e.target.value),
-                console.log('Question:', question)
-              }
-            }
+              onChange={(e) => setQuestion(e.target.value)}
             />
           </div>
           <div className="inputFieldsContainer">
@@ -138,5 +130,4 @@ const EditQuestion: React.FC = () => {
     </div>
   )
 }
-
-export default EditQuestion
+export default QuestionCreation;
