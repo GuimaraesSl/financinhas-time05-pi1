@@ -12,7 +12,7 @@ import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 import TeacherQuestionCreationScreen from '@renderer/pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
-import QuestionCreation from '@renderer/pages/QuestionCreationScreen/QuestionCreation'
+import QuestionCreation from '@renderer/pages/AddQuestionScreen/QuestionCreation'
 
 const AppRoutes: React.FC = () => {
   return (

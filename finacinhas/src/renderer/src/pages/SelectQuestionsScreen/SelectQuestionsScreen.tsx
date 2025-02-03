@@ -23,7 +23,7 @@ const SelectQuestionsScreen: React.FC = () => {
         <button onClick={() => navigate('/config')} className="profileButton">
           USAR PERGUNTAS PRÉ-DEFINIDAS
         </button>
-        <button onClick={() => navigate('/edit-questions')} className="profileButton">
+        <button onClick={() => navigate('/teacher-question')} className="profileButton">
           PERSONALIZAR PERGUNTAS
         </button>
       </main>

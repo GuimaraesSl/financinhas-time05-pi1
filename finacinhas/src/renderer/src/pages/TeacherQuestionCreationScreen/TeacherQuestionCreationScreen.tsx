@@ -12,7 +12,7 @@ const TeacherQuestionCreationScreen: React.FC = () => {
   return (
     <div className="containerTeacherQuestionScreen">
       <header className="headerTeacherQuestionScreen">
-        <button className="backButtonQuestionScreen" onClick={() => navigate('/number-teams')}>
+        <button className="backButtonQuestionScreen" onClick={() => navigate('/select-questions')}>
           <img src={backIcon} alt="icone voltar" className="backIcon" />
           VOLTAR
         </button>
@@ -21,8 +21,10 @@ const TeacherQuestionCreationScreen: React.FC = () => {
       <main className="mainTeacherQuestionScreen">
         <div className="registeredQuestions">
           <div className="sectionHeader">
-            <h2 className="titleResgiteredQuestion">SUAS PERGUNTAS CADASTRADAS</h2>
-            <button className="buttonAddQuestion" onClick={() => navigate('/question-creation')}>ADICIONAR PERGUNTA</button>
+            <h2 className="titleRegisteredQuestion">SUAS PERGUNTAS CADASTRADAS</h2>
+            <button className="buttonAddQuestion" onClick={() => navigate('/question-creation')}>
+              ADICIONAR PERGUNTA
+            </button>
           </div>
           <QuestionCard
             question={{
@@ -32,25 +34,26 @@ const TeacherQuestionCreationScreen: React.FC = () => {
               justification: 'Sample Justification'
             }}
           ></QuestionCard>
+          <div className="separator" />
           <div className="sectionHeader">
-            <h2 className="titleResgisteredQuestion">PERGUNTAS PRÉ DEFINIDAS</h2>
+            <h2 className="titleRegisteredQuestion">PERGUNTAS PRÉ DEFINIDAS</h2>
           </div>
           <QuestionCard
-              question={{
-                id: 2,
-                question: 'Pré definida 1',
-                answer: 'Pré definida',
-                justification: 'Pré definida'
-              }}
-            ></QuestionCard>
-            <QuestionCard
-              question={{
-                id: 3,
-                question: 'Pré definida 2',
-                answer: 'Pré definida',
-                justification: 'Pré definida'
-              }}
-            ></QuestionCard>
+            question={{
+              id: 2,
+              question: 'Pré definida 1',
+              answer: 'Pré definida',
+              justification: 'Pré definida'
+            }}
+          ></QuestionCard>
+          <QuestionCard
+            question={{
+              id: 3,
+              question: 'Pré definida 2',
+              answer: 'Pré definida',
+              justification: 'Pré definida'
+            }}
+          ></QuestionCard>
         </div>
       </main>
       <footer className="footerQuestionScreen">

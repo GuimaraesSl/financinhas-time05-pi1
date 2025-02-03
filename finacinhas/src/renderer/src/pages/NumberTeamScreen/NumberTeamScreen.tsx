@@ -23,7 +23,7 @@ export const NumberTeamScreen: FC = () => {
 
   const handleContinue = (): void => {
     if (selectedTeams) {
-      navigate('/teacher-question', { state: { teams: selectedTeams } })
+      navigate('/select-questions', { state: { teams: selectedTeams } })
     }
   }
 

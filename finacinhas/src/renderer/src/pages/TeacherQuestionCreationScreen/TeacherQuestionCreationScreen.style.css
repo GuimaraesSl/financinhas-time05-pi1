@@ -113,9 +113,9 @@
 }
 
 .titleRegisteredQuestion {
-  margin: 0;
+  margin-left: 35px;
   font-size: 24px;
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 .footerQuestionScreen{
@@ -167,4 +167,11 @@
 
 .buttonQuestionScreen:hover {
   transform: scale(1.05);
+}
+
+.separator {
+  width: 95%;
+  height: 5px;
+  background-color: #000;
+  margin: 16px auto;
 }
