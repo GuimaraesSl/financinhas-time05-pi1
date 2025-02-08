@@ -9,6 +9,7 @@ import RegisterScreen from '@renderer/pages/RegisterScreen/RegisterScreen'
 import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
+import ConfigTeamRoomScreen from '@renderer/pages/ConfigTeamsRoomScreen/ConfigTeamRoomScreen'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 import TeacherQuestionCreationScreen from '@renderer/pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
@@ -59,6 +60,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para a tela edit screen */}
         <Route path="/edit-questions" element={<EditQuestionScreen />} />
+
+        {/* Rota para a tela edit screen */}
+        <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
       </Routes>
     </HashRouter>
   )

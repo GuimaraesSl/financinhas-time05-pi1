@@ -1,0 +1,168 @@
+.containerConfigTeamRoomScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Fredoka One', sans-serif;
+  background-color: #f9f9f9;
+  background-image: url('../../assets/background.png');
+}
+
+.headerConfigTeamRoomScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.logoConfigTeamRoomScreen {
+  margin-top: 65px;
+  width: 350px;
+  height: 71.89px;
+  text-align: center;
+  flex: 1;
+}
+
+.backButtonConfigTeamRoomScreen {
+  position: absolute;
+  left: 80px;
+  top: 64px;
+  display: flex;
+  align-items: center;
+  padding: 10px 40px;
+  margin-top: 15px;
+  background-color: #13bb0a;
+  color: #00570a;
+  border: 5px solid #00570a;
+  border-radius: 20px;
+  height: 60px;
+  width: 200px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.backIconConfigTeamRoomScreen {
+  margin-right: 8px;
+  margin-left: -20px;
+}
+
+.mainConfigTeamRoomScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+  width: 100%;
+  height: 701px;
+  overflow: hidden;
+  margin-top: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #000000;
+  padding-top: 188px;
+}
+
+.registeredConfigTeamRooms {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  border: 4px solid #000;
+  border-radius: 10px;
+  box-shadow: 12px 12px 0px #000;
+  background-color: #FEFEFE;
+  overflow-y: auto;
+}
+
+.registeredConfigTeamRooms::-webkit-scrollbar {
+  width: 8px; 
+}
+
+.registeredConfigTeamRooms::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px; 
+}
+
+.registeredConfigTeamRooms::-webkit-scrollbar-thumb:hover {
+  background-color: #555; 
+}
+
+.sectionHeaderConfigTeamRoomScreen {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}
+
+.titleRegisteredTeamRoom {
+  margin-left: 35px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.footerConfigTeamRoomScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.buttonAddTeamRoom {
+  display: flex;
+  background-color: #13bb0a;
+  font-family: 'Fredoka', sans-serif;
+  color: #00570A;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  border: 4px solid #00570A;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.buttonAddTeamRoom:hover {
+  transform: scale(1.05);
+}
+
+.buttonConfigTeamRoomScreen {
+  padding: 10px 40px;
+  margin-top: 15px;
+  background-color: #13bb0a;
+  color: #00570a;
+  border: 5px solid #00570a;
+  border-radius: 20px;
+  height: 80px;
+  width: 1200px;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 8px 6px 0px rgba(0, 0, 0, 1);
+  text-transform: uppercase;
+  transition: transform 0.2s ease;
+}
+
+.buttonConfigTeamRoomScreen:hover {
+  transform: scale(1.05);
+}
+
+.separatorConfigTeamRoomScreen {
+  width: 95%;
+  height: 5px;
+  background-color: #000;
+  margin: 16px auto;
+}
