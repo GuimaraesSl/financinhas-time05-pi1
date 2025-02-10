@@ -1,0 +1,10 @@
+.containerTeamCard{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  border: 5px solid #BEBEBE;
+  border-radius: 20px;
+  background-color: #F3F3F3;
+  width: 100%;
+}
