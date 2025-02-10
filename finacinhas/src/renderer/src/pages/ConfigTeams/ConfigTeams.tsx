@@ -52,7 +52,7 @@ const ConfigTeam: FC = () => {
   const navigate = useNavigate()
 
   const handleContinue = (): void => {
-    navigate('/')
+    navigate('/view-ranking')
   }
 
   const handleLogout = async (): Promise<void> => {
