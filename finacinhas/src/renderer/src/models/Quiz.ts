@@ -1,7 +1,7 @@
 import Pergunta from './Pergunta'
 
 interface Quiz {
-  id?: string
+  id: string
   titulo: string
   descricao: string
   perguntas: Pergunta[]
