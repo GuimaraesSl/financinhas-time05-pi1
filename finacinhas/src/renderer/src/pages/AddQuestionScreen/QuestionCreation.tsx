@@ -1,21 +1,31 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './QuestionCreation.style.css'
 import InputField from '../../components/InputField/InputField'
 import logo from '../../assets/Logo-Subtitle.svg'
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css'
 import { MdClose } from 'react-icons/md'
-
+import { addQuestionToQuiz } from '@renderer/firebase/quiz/quiz'
+import Pergunta from '@renderer/models/Pergunta'
+import { useAuth } from '@renderer/contexts/authContext'
 
 const QuestionCreation: React.FC = () => {
   const navigate = useNavigate()
+  const professorId = useAuth().userId
+  const quizId = useParams().quizId
+
   const [question, setQuestion] = React.useState('')
   const [answer, setAnswer] = React.useState('')
   const [wrongAnswer1, setWrongAnswer1] = React.useState('')
   const [wrongAnswer2, setWrongAnswer2] = React.useState('')
   const [wrongAnswer3, setWrongAnswer3] = React.useState('')
   const [justification, setJustification] = React.useState('')
+
+  React.useEffect(() => {
+    console.log('quizId:', quizId)
+    console.log('userId:', professorId)
+  }, [quizId, professorId])
 
   const handleBack = (): void => {
     confirmAlert({
@@ -33,7 +43,7 @@ const QuestionCreation: React.FC = () => {
           <div className="buttonGroup">
             <button
               onClick={() => {
-                navigate('/teacher-question')
+                navigate(`/teacher-question/${quizId}`)
                 onClose()
               }}
             >
@@ -44,14 +54,34 @@ const QuestionCreation: React.FC = () => {
       )
     })
   }
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault()
+    if (!quizId) {
+      alert('ID do quiz não encontrado!')
+      return
+    }
+
     if (!question || !answer || !wrongAnswer1 || !wrongAnswer2 || !wrongAnswer3 || !justification) {
       alert('Por favor, preencha todos os campos!')
       return
     }
-    console.log('Question created successfully')
-    navigate('/teacher-question')
+
+    const novaPergunta: Pergunta = {
+      id: `${Date.now()}`, // Gerar um ID único para a pergunta
+      enunciado: question,
+      alternativas: [answer, wrongAnswer1, wrongAnswer2, wrongAnswer3],
+      correta: answer,
+      justificativa: justification
+    }
+
+    try {
+      await addQuestionToQuiz(professorId!, quizId!, novaPergunta)
+      alert('Pergunta criada com sucesso!')
+      navigate(`/teacher-question/${quizId}`)
+    } catch (error) {
+      console.error('Erro ao criar pergunta:', error)
+      alert('Não foi possível criar a pergunta.')
+    }
   }
   return (
     <div className="containerQuestionScreen">
@@ -130,4 +160,4 @@ const QuestionCreation: React.FC = () => {
     </div>
   )
 }
-export default QuestionCreation;
+export default QuestionCreation
