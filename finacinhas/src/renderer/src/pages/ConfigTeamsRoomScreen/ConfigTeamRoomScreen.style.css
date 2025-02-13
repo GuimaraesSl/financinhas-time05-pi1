@@ -1,3 +1,96 @@
+/* Estilo do modal (pop-up) */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que o modal fique acima de outros conteúdos */
+}
+
+.modalContent {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.modal h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #13bb0a;
+}
+
+.createQuizForm input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.createQuizForm input:focus {
+  border-color: #13bb0a;
+  outline: none;
+}
+
+.createQuizForm .buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.createQuizForm button {
+  padding: 12px 20px;
+  border: none;
+  background-color: #13bb0a;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.createQuizForm button:hover {
+  background-color: #00570a;
+}
+
+.createQuizForm button[type="button"] {
+  background-color: #ccc;
+}
+
+.createQuizForm button[type="button"]:hover {
+  background-color: #888;
+}
+
+/* Estilo do botão de fechar (cancelar) */
+.createQuizForm .closeButton {
+  background-color: #ccc;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.createQuizForm .closeButton:hover {
+  background-color: #888;
+}
+
 .containerConfigTeamRoomScreen {
   display: flex;
   flex-direction: column;
