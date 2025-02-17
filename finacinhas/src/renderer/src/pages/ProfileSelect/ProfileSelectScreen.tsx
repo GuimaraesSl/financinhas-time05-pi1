@@ -9,7 +9,9 @@ const ProfileSelectScreen: React.FC = () => {
   return (
     <div className="containerProfileSelectScreen">
       <header className="headerProfileSelectScreen">
+
         <img src={logo} className="logoProfileSelectScreen" alt="logo" />
+        
       </header>
       <main className="mainProfileSelectScreen">
         <h2 className="titlePage">Você é um...</h2>
