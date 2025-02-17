@@ -9,6 +9,7 @@ import RegisterScreen from '@renderer/pages/RegisterScreen/RegisterScreen'
 import SelectTeamScreen from '@renderer/pages/SelectTeam/SelectTeamScreen'
 import HomePage from '../pages/HomeScreen/HomeScreen'
 import ConfigTeam from '@renderer/pages/ConfigTeams/ConfigTeams'
+import ConfigTeamRoomScreen from '@renderer/pages/ConfigTeamsRoomScreen/ConfigTeamRoomScreen'
 import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQuestionsScreen'
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 import TeacherQuestionCreationScreen from '@renderer/pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
@@ -34,10 +35,10 @@ const AppRoutes: React.FC = () => {
         <Route path="/number-teams" element={<NumberTeamScreen />} />
 
         {/* Rota para a tela de ver as perguntas */}
-        <Route path="/teacher-question" element={<TeacherQuestionCreationScreen />} />
+        <Route path="/teacher-question/:quizId" element={<TeacherQuestionCreationScreen />} />
 
         {/* Rota para a tela de adição de perguntas */}
-        <Route path="/question-creation" element={<QuestionCreation />} />
+        <Route path="/question-creation/:quizId" element={<QuestionCreation />} />
 
         {/* Rota para a tela de cadastro */}
         <Route path="/register" element={<RegisterScreen />} />
@@ -58,7 +59,10 @@ const AppRoutes: React.FC = () => {
         <Route path="/select-questions" element={<SelectQuestionsScreen />} />
 
         {/* Rota para a tela edit screen */}
-        <Route path="/edit-questions" element={<EditQuestionScreen />} />
+        <Route path="/edit-question/:enunciadoAntigo" element={<EditQuestionScreen />} />
+
+        {/* Rota para a tela edit screen */}
+        <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
       </Routes>
     </HashRouter>
   )

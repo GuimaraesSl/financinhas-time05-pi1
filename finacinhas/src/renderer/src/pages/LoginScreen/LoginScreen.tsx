@@ -15,7 +15,7 @@ export const LoginScreen: FC = () => {
   const handleLogin = async (): Promise<void> => {
     try {
       await signIn(email, password)
-      navigate('/number-teams')
+      navigate('/config-team-room')
     } catch (error) {
       alert ('Erro ao fazer login, tente novamente')
       console.error('Error during sign in:', error)
