@@ -6,38 +6,34 @@ import { useNavigate } from 'react-router-dom'
 import './QuestionCard.style.css'
 
 interface Question {
-  id: string
-  enunciado: string
-  correta: string
-  justificativa: string
+  id: number
+  question: string
+  answer: string
+  justification: string
 }
 
 interface QuestionCardProps {
   question: Question
-  onDelete?: () => void
-  onEdit?: (id: string) => void
+  onDelete?: (id: number) => void
+  onEdit?: (id: number) => void
 }
 
 const QuestionCard: React.FC<QuestionCardProps> = ({ question, onDelete }) => {
   const navigate = useNavigate()
-
   return (
     <div className="card">
       <div className="content">
-        <h3 className="question">{question.enunciado}</h3>
+        <h3 className="question">{question.question}</h3>
         <div className="answerContainer">
           <img className="chatIcon" src={IconeChat} alt="Ícone Chat" />
-          <p className="answer">{question.correta}</p>
+          <p className="answer">{question.answer}</p>
         </div>
       </div>
       <div className="actions">
-        <button
-          className="editButton"
-          onClick={() => navigate(`/edit-question/${encodeURIComponent(question.enunciado)}`)}
-          >
+        <button className="editButton" onClick={() => navigate('/edit-questions')}>
           <img src={EditIcon} alt="Ícone lápis" />
         </button>
-        <button className="deleteButton" onClick={onDelete}>
+        <button className="deleteButton" onClick={() => onDelete && onDelete(question.id)}>
           <img src={DeleteIcon} alt="Ícone lixeira" />
         </button>
       </div>
