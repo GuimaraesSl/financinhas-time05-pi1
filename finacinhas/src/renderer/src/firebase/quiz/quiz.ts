@@ -1,4 +1,13 @@
-import { doc, setDoc, collection, updateDoc, arrayUnion, getDocs, getDoc } from 'firebase/firestore'
+import {
+  doc,
+  setDoc,
+  collection,
+  updateDoc,
+  arrayUnion,
+  getDocs,
+  getDoc,
+  deleteDoc
+} from 'firebase/firestore'
 import { db } from '../firebase'
 import Quiz from '../../models/Quiz'
 import Pergunta from '../../models/Pergunta'
@@ -17,6 +26,17 @@ export const createQuiz = async (professorId: string, quiz: Quiz): Promise<Quiz>
   } catch (error) {
     console.error('Erro ao criar o quiz:', error)
     throw new Error('Não foi possível criar o quiz')
+  }
+}
+
+export const removeQuiz = async (professorId: string, quizId: string): Promise<void> => {
+  try {
+    const quizRef = doc(db, 'professor', professorId, 'quiz', quizId)
+    await deleteDoc(quizRef)
+    console.log(`Quiz '${quizId}' removido com sucesso!`)
+  } catch (error) {
+    console.error('Erro ao remover o quiz:', error)
+    throw new Error('Não foi possível remover o quiz.')
   }
 }
 

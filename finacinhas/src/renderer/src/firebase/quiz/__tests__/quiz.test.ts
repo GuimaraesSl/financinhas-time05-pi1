@@ -18,37 +18,44 @@ describe('Quiz Service (Firebase Server)', () => {
 
   it('should create a quiz and save it in Firestore', async () => {
     // Dados do quiz para teste
-    const quiz1: Quiz = {
+    const quiz1: Partial<Quiz> = {
       titulo: 'Science Quiz',
       descricao: 'A quiz about science',
       perguntas: [
         {
           enunciado: 'What planet is known as the Red Planet?',
           alternativas: ['Earth', 'Mars', 'Jupiter', 'Venus'],
-          correta: 'Mars'
+          correta: 'Mars',
+          justificativa:
+            'Marte é conhecido como o Planeta Vermelho devido à sua superfície rica em óxidos de ferro, que dão ao planeta sua característica cor avermelhada.'
         }
       ]
     }
-    const quiz2: Quiz = {
+
+    const quiz2: Partial<Quiz> = {
       titulo: 'Test Quiz',
       descricao: 'A quiz for testing purposes',
       perguntas: [
         {
           enunciado: 'What is the capital of France?',
           alternativas: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-          correta: 'Paris'
+          correta: 'Paris',
+          justificativa:
+            'Paris é a capital da França desde 508 DC, quando Clóvis I estabeleceu seu reino ali. É reconhecida internacionalmente como a capital francesa por mais de 1500 anos.'
         },
         {
           enunciado: 'What is 2 + 2?',
           alternativas: ['3', '4', '5', '6'],
-          correta: '4'
+          correta: '4',
+          justificativa:
+            'Esta é uma operação matemática básica onde dois grupos de dois elementos são combinados, resultando em quatro elementos no total.'
         }
       ]
     }
 
     // Chama o método real para criar o quiz
-    const result = await createQuiz(professorId, quiz1)
-    await createQuiz(professorId, quiz2)
+    const result = await createQuiz(professorId, quiz1 as Quiz)
+    await createQuiz(professorId, quiz2 as Quiz)
 
     // Verifica se o quiz foi salvo no Firestore
     const quizzesRef = doc(db, 'professor', professorId, 'quiz', result.id!)
@@ -71,7 +78,9 @@ describe('Quiz Service (Firebase Server)', () => {
     const novaPergunta: Pergunta = {
       enunciado: 'What is the capital of Germany?',
       alternativas: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-      correta: 'Berlin'
+      correta: 'Berlin',
+      justificativa:
+        'Berlim é a capital da Alemanha desde a reunificação do país em 1990. Anteriormente, foi a capital da República Democrática Alemã (Alemanha Oriental) de 1949 até 1990.'
     }
 
     // Adiciona a pergunta ao quiz
@@ -118,7 +127,9 @@ describe('Quiz Service (Firebase Server)', () => {
     const perguntaAtualizada: Pergunta = {
       enunciado: 'What is the capital of Italy?',
       alternativas: ['Berlin', 'Madrid', 'Paris', 'Rome'],
-      correta: 'Rome'
+      correta: 'Rome',
+      justificativa:
+        'Roma é a capital da Itália desde 1871, quando o Reino da Itália foi estabelecido. Antes disso, foi a capital dos Estados Papais e do Império Romano.'
     }
 
     // Edita a pergunta
