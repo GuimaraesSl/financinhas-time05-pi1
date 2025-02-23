@@ -5,6 +5,7 @@ import { createContext, ReactNode, useContext, useEffect, useState } from 'react
 
 interface AuthContextType {
   currentUser: User | null
+  userId: string | null
   userLoggedIn: boolean
   loading: boolean
   setDisplayName: (nameUser: string) => Promise<void>
@@ -19,10 +20,11 @@ interface AuthProviderProps {
 
 export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
+  const [userId, setUserId] = useState<string | null>(null)
   const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [loading, setLoading] = useState(true)
 
-  const setDisplayName = async (name: string) => {
+  const setDisplayName = async (name: string): Promise<void> => {
     if (currentUser) {
       try {
         await updateProfile(currentUser, { displayName: name })
@@ -34,10 +36,11 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     }
   }
 
-  const logout = async () => {
+  const logout = async (): Promise<void> => {
     try {
       await signOut(auth)
       setCurrentUser(null)
+      setUserId(null)
       setUserLoggedIn(false)
     } catch (error) {
       console.error(error)
@@ -48,9 +51,11 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user)
+        setUserId(user.uid)
         setUserLoggedIn(true)
       } else {
         setCurrentUser(null)
+        setUserId(null)
         setUserLoggedIn(false)
       }
       setLoading(false)
@@ -61,6 +66,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
 
   const value: AuthContextType = {
     currentUser,
+    userId,
     userLoggedIn,
     loading,
     setDisplayName,

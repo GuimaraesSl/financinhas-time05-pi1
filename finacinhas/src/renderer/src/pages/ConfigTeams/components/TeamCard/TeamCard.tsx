@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import teamIcon from '../../../../assets/iconeProfile.svg'
 import { Team } from '../../ConfigTeams'
 import deleteIcon from '../../../../assets/delete-icon.svg'
 import './TeamCard.style.css'
@@ -15,7 +14,7 @@ export const TeamCard: FC<TeamCardProps> = ({ index, team, handleDeleteTeam }) =
     <div key={index} className="teamCard">
       <div className="teamContent">
         <div className="teamRow">
-          <img src={teamIcon} className="teamIcon" alt="Team Icon" />
+          <img src={team.image} className="teamIcon" alt="Team Icon" />
           <div className="interColumn">
             <span className="teamName">{team.name}</span>
             <span className="teamPoints">{team.points} pontos</span>
