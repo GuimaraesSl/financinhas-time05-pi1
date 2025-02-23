@@ -60,13 +60,11 @@ const ConfigTeamRoomScreen: React.FC = () => {
       alert('Por favor, preencha todos os campos!')
       return
     }
-    console.log('Novo Quiz:', newQuiz)
     try {
       if (currentUser) {
         const createdQuiz = await createQuiz(currentUser.uid, newQuiz)
         setQuizzes([...quizzes, createdQuiz])
         setShowCreateQuizForm(false)
-        console.log('Quiz criado:', createdQuiz)
         if (createdQuiz.id) {
           navigate(`/teacher-question/${createdQuiz.id}`)
         } else {

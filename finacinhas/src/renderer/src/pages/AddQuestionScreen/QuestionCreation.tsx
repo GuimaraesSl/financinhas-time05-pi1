@@ -22,11 +22,6 @@ const QuestionCreation: React.FC = () => {
   const [wrongAnswer3, setWrongAnswer3] = React.useState('')
   const [justification, setJustification] = React.useState('')
 
-  React.useEffect(() => {
-    console.log('quizId:', quizId)
-    console.log('userId:', professorId)
-  }, [quizId, professorId])
-
   const handleBack = (): void => {
     confirmAlert({
       customUI: ({ onClose }) => (

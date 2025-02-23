@@ -14,6 +14,7 @@ import SelectQuestionsScreen from '@renderer/pages/SelectQuestionsScreen/SelectQ
 import EditQuestionScreen from '@renderer/pages/EditQuestionScreen/EditQuestion'
 import TeacherQuestionCreationScreen from '@renderer/pages/TeacherQuestionCreationScreen/TeacherQuestionCreationScreen'
 import QuestionCreation from '@renderer/pages/AddQuestionScreen/QuestionCreation'
+import TeacherViewRanking from '@renderer/pages/TeacherViewRanking/TeacherViewRankin'
 
 const AppRoutes: React.FC = () => {
   return (
@@ -63,6 +64,9 @@ const AppRoutes: React.FC = () => {
 
         {/* Rota para a tela edit screen */}
         <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
+
+        {/* Rota para a tela de acompanhar o ranking */}
+        <Route path="/view-ranking/:roomCode" element={<TeacherViewRanking />} />
       </Routes>
     </HashRouter>
   )

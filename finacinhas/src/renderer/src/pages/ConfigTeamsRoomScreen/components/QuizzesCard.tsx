@@ -20,7 +20,6 @@ interface QuizzesCardProps {
 
 const QuizzesCard: React.FC<QuizzesCardProps> = ({ quizzes, onDelete }) => {
   const navigate = useNavigate()
-  console.log('Quizzes:', quizzes.id)
   return (
     <div className="card">
       <div className="ribbonFAB">
@@ -33,7 +32,7 @@ const QuizzesCard: React.FC<QuizzesCardProps> = ({ quizzes, onDelete }) => {
         </div>
       </div>
       <div className="actions">
-        <button className="goIcon" onClick={() => navigate(`/config?quizId=${quizzes.id}`)}>
+        <button className="goIcon" onClick={() => navigate(`/config/${quizzes.id}`)}>
           <img src={irIcon} alt="Ícone de Ir para a sala" />
         </button>
         <button className="editButton" onClick={() => navigate(`/teacher-question/${quizzes.id}`)}>

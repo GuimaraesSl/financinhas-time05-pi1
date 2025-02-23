@@ -6,9 +6,11 @@ import folha from '../../assets/teams/folha.svg'
 import gato from '../../assets/teams/gato.svg'
 import maca from '../../assets/teams/maca.svg'
 import agua from '../../assets/teams/agua.svg'
+import cachorro from '../../assets/teams/cachorro.svg'
 import Mais from '../../assets/icon+.svg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '@renderer/contexts/authContext'
+import { createSession } from '@renderer/firebase/session/session'
 
 export interface Team {
   name: string
@@ -18,7 +20,11 @@ export interface Team {
 
 const ConfigTeam: FC = () => {
   const { currentUser, logout } = useAuth()
+  const { userId } = useAuth()
   const [profileName, setProfileName] = useState<string | null>(null)
+  const { quizId } = useParams()
+
+  console.log(quizId)
 
   useEffect(() => {
     if (currentUser) {
@@ -31,7 +37,7 @@ const ConfigTeam: FC = () => {
     { name: 'Equipe Água', points: 0, image: agua },
     { name: 'Equipe Maçã', points: 0, image: maca },
     { name: 'Equipe Gato', points: 0, image: gato },
-    { name: 'Equipe Cachorro', points: 0, image: 'cachorro' }
+    { name: 'Equipe Cachorro', points: 0, image: cachorro }
   ]
 
   const [teams, setTeams] = useState<Team[]>(defaultTeams)
@@ -68,8 +74,13 @@ const ConfigTeam: FC = () => {
 
   const navigate = useNavigate()
 
-  const handleContinue = (): void => {
-    navigate('/')
+  const handleContinue = async (): Promise<void> => {
+    try {
+      const session = await createSession(userId!, quizId!, teams)
+      navigate(`/view-ranking/${session.code}`)
+    } catch (error) {
+      console.error('Erro ao criar sessão:', error)
+    }
   }
 
   const handleLogout = async (): Promise<void> => {

@@ -1,0 +1,18 @@
+.containerTeamReviewCard{
+  display: flex;
+  flex-direction: row;
+  justify-items: center;
+  align-items: center;
+  padding: 10px;
+  border: 5px solid #BEBEBE;
+  border-radius: 20px;
+  background-color: #F3F3F3;
+  width: 100%;
+  gap: 16px;
+}
+
+.logoReviewTeam {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+}
