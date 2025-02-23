@@ -66,7 +66,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/config-team-room" element={<ConfigTeamRoomScreen />} />
 
         {/* Rota para a tela de acompanhar o ranking */}
-        <Route path="/view-ranking" element={<TeacherViewRanking />} />
+        <Route path="/view-ranking/:roomCode" element={<TeacherViewRanking />} />
       </Routes>
     </HashRouter>
   )
