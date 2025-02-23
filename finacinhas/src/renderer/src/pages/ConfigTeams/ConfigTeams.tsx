@@ -7,7 +7,7 @@ import gato from '../../assets/teams/gato.svg'
 import maca from '../../assets/teams/maca.svg'
 import agua from '../../assets/teams/agua.svg'
 import Mais from '../../assets/icon+.svg'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '@renderer/contexts/authContext'
 
 export interface Team {
@@ -19,6 +19,9 @@ export interface Team {
 const ConfigTeam: FC = () => {
   const { currentUser, logout } = useAuth()
   const [profileName, setProfileName] = useState<string | null>(null)
+  const { quizId } = useParams()
+
+  console.log(quizId)
 
   useEffect(() => {
     if (currentUser) {

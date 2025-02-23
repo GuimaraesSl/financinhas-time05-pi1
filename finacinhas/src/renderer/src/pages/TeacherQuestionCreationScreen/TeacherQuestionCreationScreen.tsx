@@ -14,62 +14,56 @@ const TeacherQuestionCreationScreen: React.FC = () => {
   const quizId = useParams().quizId
   const [perguntas, setPerguntas] = useState<Pergunta[]>([])
 
-  console.log('ID do professor:', userId)
-  console.log('ID do quiz:', quizId)
-  
   // Função auxiliar para remover aspas simples ou duplas do início e fim da string
   const cleanText = (text: string): string => {
     return text.replace(/^['"]+|['"]+$/g, '')
   }
 
   useEffect(() => {
-    console.log('Parâmetros recebidos:', { userId, quizId });
-    
+    console.log('Parâmetros recebidos:', { userId, quizId })
+
     if (!userId) {
-      console.error("Erro: userId não está definido!");
-      return;
+      console.error('Erro: userId não está definido!')
+      return
     }
-  
+
     if (!quizId) {
-      console.error("Erro: quizId não está definido!");
-      return;
+      console.error('Erro: quizId não está definido!')
+      return
     }
-  
+
     const fetchQuestions = async (): Promise<void> => {
       try {
-        const questionsList = await listQuestionsFromQuiz(userId, quizId);
-        setPerguntas(questionsList);
-        console.log('Perguntas:', questionsList);
+        const questionsList = await listQuestionsFromQuiz(userId, quizId)
+        setPerguntas(questionsList)
+        console.log('Perguntas:', questionsList)
       } catch (error) {
-        console.error('Erro ao buscar perguntas:', error);
+        console.error('Erro ao buscar perguntas:', error)
       }
-    };
-  
-    fetchQuestions();
-  }, [userId, quizId]);
-  
+    }
+
+    fetchQuestions()
+  }, [userId, quizId])
 
   const handleDeleteQuestion = async (enunciado: string): Promise<void> => {
     if (!userId || !quizId) {
       console.error('ID do professor ou do quiz não encontrado!')
       return
     }
-    const isConfirmed = window.confirm("Tem certeza que deseja excluir esta pergunta?");
-    if (!isConfirmed) return;
-  
+    const isConfirmed = window.confirm('Tem certeza que deseja excluir esta pergunta?')
+    if (!isConfirmed) return
+
     try {
-      await removeQuestionFromQuiz(userId, quizId, enunciado);
-  
+      await removeQuestionFromQuiz(userId, quizId, enunciado)
+
       // Atualiza o estado para refletir a remoção sem precisar recarregar a tela
-      setPerguntas(prevPerguntas =>
-        prevPerguntas.filter(p => p.enunciado !== enunciado)
-      );
-  
-      console.log('Pergunta removida com sucesso!');
+      setPerguntas((prevPerguntas) => prevPerguntas.filter((p) => p.enunciado !== enunciado))
+
+      console.log('Pergunta removida com sucesso!')
     } catch (error) {
-      console.error('Erro ao remover pergunta:', error);
+      console.error('Erro ao remover pergunta:', error)
     }
-  };
+  }
 
   return (
     <div className="containerTeacherQuestionScreen">
@@ -84,7 +78,10 @@ const TeacherQuestionCreationScreen: React.FC = () => {
         <div className="registeredQuestions">
           <div className="sectionHeader">
             <h2 className="titleRegisteredQuestion">SUAS PERGUNTAS CADASTRADAS</h2>
-            <button className="buttonAddQuestion" onClick={() => navigate(`/question-creation/${quizId}`)}>
+            <button
+              className="buttonAddQuestion"
+              onClick={() => navigate(`/question-creation/${quizId}`)}
+            >
               ADICIONAR PERGUNTA
             </button>
           </div>
