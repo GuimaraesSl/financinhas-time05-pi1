@@ -1,4 +1,5 @@
-import { FC, useState, useEffect, useRef } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FC, useState, useEffect, useRef, useMemo } from 'react'
 import Header from '../../components/Header/Header'
 import { useNavigate, useParams } from 'react-router-dom'
 import './TeacherViewRanking.style.css'
@@ -11,39 +12,17 @@ import third from '../../assets/terceiro.svg'
 import fourth from '../../assets/quarto.svg'
 import fifth from '../../assets/quinto.svg'
 import TeamCard from './components/TeamCard'
-import Team from '../../models/Team'
+import { doc } from 'firebase/firestore'
+import { db } from '@renderer/firebase/firebase'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
 
 const TeacherViewRanking: FC = () => {
   const [profileName, setProfileName] = useState<string | null>(null)
-  const { currentUser, logout } = useAuth()
   const [isGameStarted, setIsGameStarted] = useState<boolean>(false)
   const [timeElapsed, setTimeElapsed] = useState<number>(0)
+  const { currentUser, logout } = useAuth()
   const { roomCode } = useParams()
-
-  const teams: Team[] = [
-    {
-      name: 'Equipe Folha',
-      points: 10
-    },
-    {
-      name: 'Equipe Água',
-      points: 30
-    },
-    {
-      name: 'Equipe Maçã',
-      points: 50
-    },
-    {
-      name: 'Equipe Gato',
-      points: 40
-    },
-    {
-      name: 'Equipe Cachorro',
-      points: 70
-    }
-  ]
-
-  const sortedTeams = [...teams].sort((a, b) => b.points - a.points)
+  const navigate = useNavigate()
 
   const getMedalImage = (index: number): string => {
     switch (index) {
@@ -66,34 +45,6 @@ const TeacherViewRanking: FC = () => {
     setIsGameStarted(!isGameStarted)
   }
 
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (currentUser) {
-      setProfileName(currentUser.displayName || 'Usuário')
-    }
-  }, [currentUser])
-
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
-
-  useEffect(() => {
-    if (isGameStarted) {
-      timerRef.current = setInterval(() => {
-        setTimeElapsed((prevTime) => prevTime + 1)
-      }, 1000)
-    } else if (!isGameStarted && timeElapsed !== 0) {
-      if (timerRef.current) {
-        clearInterval(timerRef.current)
-      }
-    }
-
-    return (): void => {
-      if (timerRef.current) {
-        clearInterval(timerRef.current)
-      }
-    }
-  }, [isGameStarted, timeElapsed])
-
   const handleLogout = async (): Promise<void> => {
     await logout()
     navigate('/')
@@ -106,9 +57,66 @@ const TeacherViewRanking: FC = () => {
     return `${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`
   }
 
+  useEffect(() => {
+    if (currentUser) {
+      setProfileName(currentUser.displayName || 'Usuário')
+    }
+  }, [currentUser])
+
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  useEffect(() => {
+    if (isGameStarted) {
+      timerRef.current = setInterval(() => {
+        setTimeElapsed((prevTime) => prevTime + 1)
+      }, 1000)
+    } else if (!isGameStarted && timeElapsed !== 0) {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+    }
+    return (): void => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current)
+      }
+    }
+  }, [isGameStarted, timeElapsed])
+
+  const sessionRef = useMemo(() => {
+    if (!roomCode) return null
+    return doc(db, `sessions/${roomCode}`)
+  }, [roomCode])
+
+  const [session, loading, error] = useDocumentData(sessionRef)
+
+  const teams = session?.teams || []
+
+  const sortedTeams = [...teams].sort((a, b) => b.points - a.points)
+
+  if (loading) {
+    return (
+      <div className="containerTeacherViewRanking">
+        <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
+        <main className="mainTeacherViewRanking">
+          <div className="loading-message">Carregando times...</div>
+        </main>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="containerTeacherViewRanking">
+        <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
+        <main className="mainTeacherViewRanking">
+          <div className="error-message">{error.message}</div>
+        </main>
+      </div>
+    )
+  }
+
   return (
     <div className="containerTeacherViewRanking">
-      <Header profileName={profileName || 'Usuário'} onExit={() => handleLogout}></Header>
+      <Header profileName={profileName || 'Usuário'} onExit={handleLogout} />
       <main className="mainTeacherViewRanking">
         <div className="infoRanking">
           <div className="codTurma">
@@ -116,7 +124,6 @@ const TeacherViewRanking: FC = () => {
           </div>
           <div className="timerInit">
             <div className="viewRankingTimer">
-              {' '}
               <img src={Timer} alt="ícone relógio" /> {formatTime(timeElapsed)}
             </div>
             <button
@@ -130,7 +137,7 @@ const TeacherViewRanking: FC = () => {
         </div>
         <div className="viewRanking">
           <h2>RANKING EM TEMPO REAL</h2>
-          {sortedTeams.map((team, index) => (
+          {sortedTeams?.map((team, index) => (
             <div key={index} className="cardTeams">
               <img src={getMedalImage(index)} alt={`medalha ${index + 1}º lugar`} />
               <TeamCard team={team} />
@@ -141,4 +148,5 @@ const TeacherViewRanking: FC = () => {
     </div>
   )
 }
+
 export default TeacherViewRanking
