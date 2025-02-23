@@ -16,15 +16,14 @@ const ConfigTeamRoomScreen: React.FC = () => {
   const [quizzes, setQuizzes] = useState<Quiz[]>([])
   const [loading, setLoading] = useState(true)
   const [profileName, setProfileName] = useState<string | null>(null)
-  const [showCreateQuizForm, setShowCreateQuizForm] = useState(false) 
-  const [newQuiz, setNewQuiz] = useState<Quiz>({ id: '', titulo: '', descricao: '', perguntas: [] }) 
+  const [showCreateQuizForm, setShowCreateQuizForm] = useState(false)
+  const [newQuiz, setNewQuiz] = useState<Quiz>({ id: '', titulo: '', descricao: '', perguntas: [] })
   useEffect(() => {
     const fetchQuizzes = async (): Promise<void> => {
       if (!currentUser) {
-        setLoading(false) 
+        setLoading(false)
         return
       }
-  
       try {
         const quizzesList = await listQuizzesByProfessor(currentUser.uid)
         setQuizzes(quizzesList)
@@ -34,7 +33,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
         setLoading(false)
       }
     }
-  
+
     fetchQuizzes()
   }, [currentUser])
 
@@ -43,7 +42,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
       setProfileName(currentUser.displayName || 'Usuário')
     }
   }, [currentUser])
-  
+
   if (loading) {
     return <div>Carregando...</div>
   }
@@ -67,12 +66,12 @@ const ConfigTeamRoomScreen: React.FC = () => {
         const createdQuiz = await createQuiz(currentUser.uid, newQuiz)
         setQuizzes([...quizzes, createdQuiz])
         setShowCreateQuizForm(false)
-        console.log('Quiz criado:', createdQuiz);
+        console.log('Quiz criado:', createdQuiz)
         if (createdQuiz.id) {
-          navigate(`/teacher-question/${createdQuiz.id}`);
+          navigate(`/teacher-question/${createdQuiz.id}`)
         } else {
-          console.error('Erro: ID do quiz não definido.');
-        }        
+          console.error('Erro: ID do quiz não definido.')
+        }
       }
     } catch (error) {
       console.error('Erro ao criar o quiz:', error)
@@ -91,7 +90,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
               ADICIONAR JOGO
             </button>
           </div>
-          
+
           {showCreateQuizForm && (
             <div className="modal">
               <div className="modalContent">
@@ -119,7 +118,9 @@ const ConfigTeamRoomScreen: React.FC = () => {
                   </div>
                   <div className="buttonGroup">
                     <button type="submit">Criar Jogo</button>
-                    <button type="button" onClick={() => setShowCreateQuizForm(false)}>Cancelar</button>
+                    <button type="button" onClick={() => setShowCreateQuizForm(false)}>
+                      Cancelar
+                    </button>
                   </div>
                 </form>
               </div>
@@ -132,7 +133,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
               quizzes={{
                 id: quiz.id || '',
                 quizzes: quiz.titulo,
-                answer: quiz.descricao,
+                answer: quiz.descricao
               }}
             />
           ))}

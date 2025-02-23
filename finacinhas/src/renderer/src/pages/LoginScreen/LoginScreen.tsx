@@ -17,7 +17,7 @@ export const LoginScreen: FC = () => {
       await signIn(email, password)
       navigate('/config-team-room')
     } catch (error) {
-      alert ('Erro ao fazer login, tente novamente')
+      alert('Erro ao fazer login, tente novamente')
       console.error('Error during sign in:', error)
     }
   }

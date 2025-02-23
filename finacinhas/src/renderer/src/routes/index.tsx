@@ -50,7 +50,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/select-team" element={<SelectTeamScreen />} />
 
         {/*Rota para tela de configuração do quiz*/}
-        <Route path="/config" element={<ConfigTeam />} />
+        <Route path="/config/:quizId" element={<ConfigTeam />} />
 
         {/* Rota para tela do jogo */}
         <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />

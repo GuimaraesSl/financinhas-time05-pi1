@@ -24,7 +24,7 @@ const QuizzesCard: React.FC<QuizzesCardProps> = ({ quizzes, onDelete }) => {
   return (
     <div className="card">
       <div className="ribbonFAB">
-      <img src={ribbonIcon} alt="Ícone de Ir para a sala" />
+        <img src={ribbonIcon} alt="Ícone de Ir para a sala" />
       </div>
       <div className="content">
         <h3 className="question">{quizzes.quizzes}</h3>
@@ -33,10 +33,10 @@ const QuizzesCard: React.FC<QuizzesCardProps> = ({ quizzes, onDelete }) => {
         </div>
       </div>
       <div className="actions">
-      <button className="goIcon" onClick={() => navigate('/config')}>
+        <button className="goIcon" onClick={() => navigate(`/config?quizId=${quizzes.id}`)}>
           <img src={irIcon} alt="Ícone de Ir para a sala" />
         </button>
-        <button className="editButton" onClick={() => navigate(`/teacher-question/${quizzes.id}`)}>;
+        <button className="editButton" onClick={() => navigate(`/teacher-question/${quizzes.id}`)}>
           <img src={EditIcon} alt="Ícone lápis" />
         </button>
         <button className="deleteButton" onClick={() => onDelete && onDelete(quizzes.id)}>
