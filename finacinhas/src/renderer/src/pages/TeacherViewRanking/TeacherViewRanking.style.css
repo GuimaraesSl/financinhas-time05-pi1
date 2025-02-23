@@ -124,3 +124,16 @@
   margin-top: 10px;
   gap: 10px;
 }
+
+.loading-message {
+  text-align: center;
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+.error-message {
+  text-align: center;
+  padding: 20px;
+  color: #ff0000;
+  font-size: 1.2em;
+}
