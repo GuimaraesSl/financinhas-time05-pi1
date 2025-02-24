@@ -2,6 +2,8 @@
 Repositório dedicado à cadeira de Projeto Integrado 1 do curso de Engenharia de Software, referente ao semestre 2024.2.
 Cadeira ministrada pelo professor JEFERSON KENEDY MORAIS VIEIRA, para a turma  01A, da Universidade Federal do Ceará - campus Quixadá.
 
+- [Figma Link](https://www.figma.com/design/YB0Ia2hloIJGASlgzsWrYW/Financinhas?node-id=1-4&p=f&t=apSZrMsofBoI5oVO-0)
+
 ## Integrantes
 - Francisco Gabriel da Silva Lima - 514586
 - Vitor Loula Silva - 540622
