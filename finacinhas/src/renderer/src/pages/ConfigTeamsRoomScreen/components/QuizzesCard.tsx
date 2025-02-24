@@ -14,7 +14,7 @@ interface Quizzes {
 
 interface QuizzesCardProps {
   quizzes: Quizzes
-  onDelete?: (id: string) => void
+  onDelete: (quizId: string) => void
   onEdit?: (id: string) => void
 }
 
@@ -38,7 +38,12 @@ const QuizzesCard: React.FC<QuizzesCardProps> = ({ quizzes, onDelete }) => {
         <button className="editButton" onClick={() => navigate(`/teacher-question/${quizzes.id}`)}>
           <img src={EditIcon} alt="Ícone lápis" />
         </button>
-        <button className="deleteButton" onClick={() => onDelete && onDelete(quizzes.id)}>
+        <button
+          className="deleteButton"
+          onClick={() => {
+            onDelete(quizzes.id)
+          }}
+        >
           <img src={DeleteIcon} alt="Ícone lixeira" />
         </button>
       </div>

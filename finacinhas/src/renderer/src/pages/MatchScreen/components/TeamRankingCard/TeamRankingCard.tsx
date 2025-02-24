@@ -1,25 +1,14 @@
 import { FC } from 'react'
 import './TeamRankingCard.style.css'
 import Team from '@renderer/models/Team'
-import macaIcon from '../../../../assets/teams/maca.svg'
-import aguaIcon from '../../../../assets/teams/agua.svg'
-import folhaIcon from '../../../../assets/teams/folha.svg'
+import maca from '../../../../assets/teams/maca.svg'
+import agua from '../../../../assets/teams/agua.svg'
+import folha from '../../../../assets/teams/folha.svg'
+import gato from '../../../../assets/teams/gato.svg'
+import cachorro from '../../../../assets/teams/cachorro.svg'
 import goldMedal from '../../../../assets/medals/first.svg'
 import silverMedal from '../../../../assets/medals/second.svg'
 import bronzeMedal from '../../../../assets/medals/third.svg'
-
-const getTeamIcon = (teamName: string): JSX.Element => {
-  switch (teamName) {
-    case 'Maçã':
-      return <img src={macaIcon} alt="Maçã" className="team-svg-icon" />
-    case 'Água':
-      return <img src={aguaIcon} alt="Água" className="team-svg-icon" />
-    case 'Folha':
-      return <img src={folhaIcon} alt="Folha" className="team-svg-icon" />
-    default:
-      return <></>
-  }
-}
 
 const getMedalIcon = (rank: number): JSX.Element | null => {
   switch (rank) {
@@ -39,11 +28,18 @@ const TeamRankingCard: FC<{ className?: string; team: Team; rank: number }> = ({
   team,
   rank = 1
 }) => {
+  const teamImages = {
+    'Equipe Folha': folha,
+    'Equipe Água': agua,
+    'Equipe Maçã': maca,
+    'Equipe Gato': gato,
+    'Equipe Cachorro': cachorro
+  } as const
   return (
     <li key={team.name} className={`team ${className}`}>
-      <div className="team-icon">{getTeamIcon(team.name)}</div>
+      <img src={teamImages[team.name]} alt="logo equipe" />
       <div className="team-info">
-        <p className="team-name">Equipe {team.name}</p>
+        <p className="team-name">{team.name}</p>
         <p className="team-points">{team.points} pontos</p>
       </div>
       <div className="team-medal">{getMedalIcon(rank)}</div>

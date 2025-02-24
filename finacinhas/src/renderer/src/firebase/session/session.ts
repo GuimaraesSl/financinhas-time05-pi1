@@ -68,6 +68,31 @@ export const updateTeamPoints = async (
   try {
     const sessionRef = doc(db, 'sessions', roomCode)
     const sessionSnap = await getDoc(sessionRef)
+    if (!sessionSnap.exists()) {
+      throw new Error('Sessão não encontrada')
+    }
+    const sessionData = sessionSnap.data() as Session
+    const teamIndex = sessionData.teams.findIndex((team) => team.name === teamName)
+    if (teamIndex === -1) {
+      throw new Error('Time não encontrado')
+    }
+    // Adiciona os pontos à pontuação atual
+    sessionData.teams[teamIndex].points += points
+    await setDoc(sessionRef, sessionData)
+  } catch (error) {
+    console.error('Erro ao atualizar pontos do time:', error)
+    throw new Error('Não foi possível atualizar os pontos do time')
+  }
+}
+
+export const updateTeamHasAnswered = async (
+  roomCode: string,
+  teamName: string,
+  hasAnswered: boolean
+): Promise<void> => {
+  try {
+    const sessionRef = doc(db, 'sessions', roomCode)
+    const sessionSnap = await getDoc(sessionRef)
 
     if (!sessionSnap.exists()) {
       throw new Error('Sessão não encontrada')
@@ -80,11 +105,11 @@ export const updateTeamPoints = async (
       throw new Error('Time não encontrado')
     }
 
-    sessionData.teams[teamIndex].points = points
+    sessionData.teams[teamIndex].hasAnswered = hasAnswered
     await setDoc(sessionRef, sessionData)
   } catch (error) {
-    console.error('Erro ao atualizar pontos do time:', error)
-    throw new Error('Não foi possível atualizar os pontos do time')
+    console.error('Erro ao atualizar status de resposta do time:', error)
+    throw new Error('Não foi possível atualizar o status de resposta do time')
   }
 }
 

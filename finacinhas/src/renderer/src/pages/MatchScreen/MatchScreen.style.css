@@ -148,6 +148,14 @@
   color: #1D1D1D
 }
 
+.question-box {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  gap: 16px;
+}
+
 /* Temporizador */
 .timer {
   font-size: 2.25rem;

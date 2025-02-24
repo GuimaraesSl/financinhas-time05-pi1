@@ -101,7 +101,6 @@ describe('Quiz Service (Firebase Server)', () => {
     const perguntas = await listQuestionsFromQuiz(professorId, quizId)
 
     // Valida se as perguntas foram retornadas corretamente
-    console.log(perguntas)
     expect(perguntas).toHaveLength(3)
   })
 

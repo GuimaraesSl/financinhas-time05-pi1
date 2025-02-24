@@ -1,141 +1,128 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo, useRef } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './MatchScreen.style.css'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import ExitButton from '@renderer/components/ExitButton/ExitButton'
-import Team from '@renderer/models/Team'
 import TeamRankingCard from './components/TeamRankingCard/TeamRankingCard'
 import { Button } from '@renderer/components/Button'
+import { doc } from 'firebase/firestore'
+import { db } from '@renderer/firebase/firebase'
+import { useDocumentData } from 'react-firebase-hooks/firestore'
+import Quiz from '@renderer/models/Quiz'
+import { getQuizById } from '@renderer/firebase/quiz/quiz'
+import { updateTeamHasAnswered, updateTeamPoints } from '@renderer/firebase/session/session'
+import Team from '@renderer/models/Team'
 
-interface Alternative {
-  arg: string
-}
-
-interface Quest {
-  quest: string
-  alternatives: Alternative[]
-  correctAlternative: Alternative
-  timeToRespond: number
-}
-
-interface Match {
-  code: string
-  playingTeams: Team[]
-  questions: Quest[]
-}
-
-const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) => {
+const MatchScreen: React.FC = () => {
   const navigate = useNavigate()
-  const [match, setMatch] = useState<Match | null>(() => ({
-    code: '123abc',
-    playingTeams: [
-      { value: 'maca', name: 'Maçã', points: 40, hasAnswered: false },
-      { value: 'agua', name: 'Água', points: 16, hasAnswered: false },
-      { value: 'folha', name: 'Folha', points: 10, hasAnswered: false }
-    ],
-    questions: [
-      {
-        quest: 'Por que é importante economizar dinheiro?',
-        alternatives: [
-          { arg: 'Para comprar mais brinquedos.' },
-          { arg: 'Para gastar com coisas que você quer, como videogames e roupas.' },
-          { arg: 'Para garantir que você tenha dinheiro quando precisar no futuro.' },
-          { arg: 'Para gastar todo o dinheiro de uma vez.' }
-        ],
-        correctAlternative: {
-          arg: 'Para garantir que você tenha dinheiro quando precisar no futuro.'
-        },
-        timeToRespond: 90
-      },
-      {
-        quest: 'Qual é a diferença entre necessidade e desejo?',
-        alternatives: [
-          { arg: 'Necessidade é o que você quer, e desejo é o que você precisa.' },
-          {
-            arg: 'Necessidade é algo essencial para a vida, e desejo é algo que você quer, mas não precisa.'
-          },
-          { arg: 'Necessidade é o que você compra, e desejo é o que você ganha de presente.' },
-          { arg: 'Necessidade e desejo são a mesma coisa.' }
-        ],
-        correctAlternative: {
-          arg: 'Necessidade é algo essencial para a vida, e desejo é algo que você quer, mas não precisa.'
-        },
-        timeToRespond: 90
+  const { roomCode, teamName } = useParams<{ roomCode: string; teamName: string }>()
+
+  const sessionRef = useMemo(() => {
+    if (!roomCode) return null
+    return doc(db, `sessions/${roomCode}`)
+  }, [roomCode])
+
+  const [session] = useDocumentData(sessionRef)
+  const teams = session?.teams || []
+  const sortedTeams = [...teams].sort((a, b) => b.points - a.points) as Team[]
+
+  const [quiz, setQuiz] = useState<Quiz>()
+
+  const [currentTeam, setCurrentTeam] = useState<Team | null>(null)
+
+  useEffect(() => {
+    if (session && teamName) {
+      const foundTeam = sortedTeams.find((team) => team.name === teamName)
+      setCurrentTeam(foundTeam || null)
+    }
+  }, [session, teamName])
+
+  useEffect(() => {
+    const loadQuiz = async (): Promise<void> => {
+      try {
+        const questions = await getQuizById(session?.professorId, session?.quizId)
+        if (!questions) {
+          throw new Error('Quiz não encontrado')
+        }
+        setQuiz(questions)
+      } catch (err) {
+        console.error(err instanceof Error ? err.message : 'Erro ao carregar o quiz')
       }
-    ]
-  }))
+    }
+
+    loadQuiz()
+  }, [session])
+
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
   const [timer, setTimer] = useState<number | null>(null)
-  const [selectedAlternative, setSelectedAlternative] = useState<Alternative | null>(null) // Nova linha
-
-  const localTeam = match?.playingTeams.find((team) => team.value === localTeamName)
+  const [selectedAlternative, setSelectedAlternative] = useState<string | null>(null)
+  const timeoutRef = useRef<NodeJS.Timeout>()
 
   useEffect(() => {
     if (timer !== null && timer > 0) {
-      const timeout = setTimeout(() => setTimer(timer - 1), 1000)
-      return (): void => clearTimeout(timeout)
+      timeoutRef.current = setTimeout(() => {
+        setTimer((prevTimer) => prevTimer! - 1)
+      }, 1000)
     } else if (timer === 0) {
       handleEndOfQuestion()
+    }
+
+    return (): void => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
     }
   }, [timer])
 
   useEffect(() => {
-    setTimer(match!.questions[currentQuestionIndex].timeToRespond)
+    setTimer(40)
     setSelectedAlternative(null)
   }, [currentQuestionIndex])
 
-  const handleAnswer = (): void => {
-    const currentQuestion = match!.questions[currentQuestionIndex]
-
+  const handleAnswer = async (): Promise<void> => {
     if (!selectedAlternative) return
+    await updateTeamHasAnswered(roomCode!, teamName!, true)
+  }
 
-    const isCorrect = selectedAlternative.arg === currentQuestion.correctAlternative.arg
+  const handleEndOfQuestion = async (): Promise<void> => {
+    const currentQuestion = quiz?.perguntas[currentQuestionIndex]
+    const isCorrect = selectedAlternative === currentQuestion?.correta
 
     if (isCorrect) {
-      alert('Resposta Correta')
+      setCorrectAnswer(true)
+      await updateTeamPoints(roomCode!, teamName!, 10)
     } else {
-      alert('Resposta Errada')
+      setCorrectAnswer(false)
     }
 
-    const updatedTeams = match!.playingTeams.map((team) =>
-      team.name === localTeamName
-        ? { ...team, points: isCorrect ? team.points + 1 : team.points, hasAnswered: true }
-        : team
-    )
+    setTimer(null)
+    await updateTeamHasAnswered(roomCode!, teamName!, true)
+    setShowJustification(true)
+    setTimer(30)
 
-    setMatch({
-      ...match!,
-      playingTeams: updatedTeams
-    })
-
-    if (updatedTeams.every((team) => team.hasAnswered)) {
-      handleEndOfQuestion()
-    }
-  }
-
-  const handleEndOfQuestion = (): void => {
-    setTimer(null) // Para o cronômetro
-
-    if (currentQuestionIndex < match!.questions.length - 1) {
-      setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
-      setMatch({
-        ...match!,
-        playingTeams: match!.playingTeams.map((team) => ({ ...team, hasAnswered: false }))
-      })
+    if (currentQuestionIndex < quiz!.perguntas.length - 1) {
+      setTimeout(async () => {
+        setShowJustification(false)
+        setCurrentQuestionIndex((prevIndex) => prevIndex + 1)
+        await updateTeamHasAnswered(roomCode!, teamName!, false)
+        setTimer(40)
+        setSelectedAlternative(null)
+      }, 30000)
+    } else {
+      setGameOver(true)
+      setTimer(null)
     }
   }
-
-  const currentQuestion = match?.questions[currentQuestionIndex]
-
-  const sortedTeams = match?.playingTeams.sort((a, b) => b.points - a.points)
-
+  const currentQuestion = quiz?.perguntas[currentQuestionIndex]
   const alternativeColors = ['red', 'blue', 'green', 'yellow']
+  const [showJustification, setShowJustification] = useState(false)
+  const [correctAnswer, setCorrectAnswer] = useState(false)
+  const [gameOver, setGameOver] = useState(false)
 
   return (
     <div className="matchScreenContainer">
       <header className="header">
         <img src={logo} alt="Financinhas" className="logoMatch" />
-        {/* TODO: Make logic in exit button. */}
         <ExitButton onClick={() => navigate('/')} className="exitButton" />
       </header>
       <main className="game-area">
@@ -150,7 +137,29 @@ const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) =>
 
         <div className="play-area">
           <div className="box question-div">
-            <p className="question-text">{currentQuestion?.quest}</p>
+            {gameOver ? (
+              <>
+                <div className="question-box">
+                  <p className="question-text">
+                    <strong>Fim de Jogo</strong>
+                  </p>
+                  <p className="question-text">Obrigado por jogar!!</p>
+                </div>
+              </>
+            ) : (
+              <>
+                {showJustification ? (
+                  <div className="question-box">
+                    <p className="question-text" style={{ color: correctAnswer ? 'green' : 'red' }}>
+                      <strong>{correctAnswer ? 'Resposta correta!' : 'Resposta errada!'}</strong>
+                    </p>
+                    <p className="question-text">{currentQuestion?.justificativa}</p>
+                  </div>
+                ) : (
+                  <p className="question-text">{currentQuestion?.enunciado}</p>
+                )}
+              </>
+            )}
             <div className="timer box">
               <span>
                 {timer !== null
@@ -174,28 +183,32 @@ const MatchScreen: React.FC<{ localTeamName?: string }> = ({ localTeamName }) =>
               ALTERNATIVAS
             </span>
             <div className="alternatives">
-              {currentQuestion?.alternatives.map((alternative, index) => (
+              {currentQuestion?.alternativas.map((alternative, index) => (
                 <button
                   key={index}
                   className={`alternative-btn ${alternativeColors[index % alternativeColors.length]} ${
                     selectedAlternative === alternative ? 'selected' : ''
                   }`}
                   onClick={() => setSelectedAlternative(alternative)}
-                  disabled={localTeam!.hasAnswered || timer === null}
+                  disabled={currentTeam?.hasAnswered || timer === null}
                 >
                   <span className="alt-label">{String.fromCharCode(65 + index)}.</span>{' '}
-                  {alternative.arg}
+                  {alternative}
                 </button>
               ))}
             </div>
-            <Button onClick={handleAnswer} style={{ height: '60px', marginBottom: '20px' }}>
-              {localTeam!.hasAnswered ? 'RESPONDIDO!' : 'RESPONDER'}
+            <Button
+              disabled={currentTeam?.hasAnswered}
+              onClick={handleAnswer}
+              style={{ height: '60px', marginBottom: '20px' }}
+            >
+              {currentTeam?.hasAnswered ? 'RESPONDIDO!' : 'RESPONDER'}
             </Button>
           </section>
         </div>
       </main>
       <footer className="footer">
-        <p>Código da sala: {match?.code}</p>
+        <p>Código da sala: {roomCode}</p>
       </footer>
     </div>
   )
