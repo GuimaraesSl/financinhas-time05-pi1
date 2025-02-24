@@ -48,13 +48,13 @@ const AppRoutes: React.FC = () => {
         <Route path="/enter" element={<EnterRoomScreen />} />
 
         {/* Rota para a tela de selecionar time */}
-        <Route path="/select-team" element={<SelectTeamScreen />} />
+        <Route path="/select-team/:roomCode" element={<SelectTeamScreen />} />
 
         {/*Rota para tela de configuração do quiz*/}
         <Route path="/config/:quizId" element={<ConfigTeam />} />
 
         {/* Rota para tela do jogo */}
-        <Route path="/match-screen/:teamName" element={<MatchScreenWrapper />} />
+        <Route path="/match-screen/:roomCode/:teamName" element={<MatchScreenWrapper />} />
 
         {/* Rota para tela de seleção de perguntas */}
         <Route path="/select-questions" element={<SelectQuestionsScreen />} />

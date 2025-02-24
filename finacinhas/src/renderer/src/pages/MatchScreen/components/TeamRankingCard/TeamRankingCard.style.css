@@ -8,6 +8,8 @@
   border-radius: 10px;
   padding: 10px;
   position: relative;
+  flex-direction: row;
+  gap: 16px;
 }
 
 .team:last-child {

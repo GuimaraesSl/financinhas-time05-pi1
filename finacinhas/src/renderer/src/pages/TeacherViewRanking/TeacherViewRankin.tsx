@@ -48,7 +48,6 @@ const TeacherViewRanking: FC = () => {
   const handleLogout = async (): Promise<void> => {
     await logout()
     navigate('/')
-    alert('Sessão encerrada com sucesso!')
   }
 
   const formatTime = (seconds: number): string => {
@@ -64,6 +63,7 @@ const TeacherViewRanking: FC = () => {
   }, [currentUser])
 
   const timerRef = useRef<NodeJS.Timeout | null>(null)
+
   useEffect(() => {
     if (isGameStarted) {
       timerRef.current = setInterval(() => {
@@ -87,9 +87,7 @@ const TeacherViewRanking: FC = () => {
   }, [roomCode])
 
   const [session, loading, error] = useDocumentData(sessionRef)
-
   const teams = session?.teams || []
-
   const sortedTeams = [...teams].sort((a, b) => b.points - a.points)
 
   if (loading) {

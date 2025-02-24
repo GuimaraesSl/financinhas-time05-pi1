@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '@renderer/contexts/authContext'
-import { listQuizzesByProfessor } from '@renderer/firebase/quiz/quiz'
+import { listQuizzesByProfessor, removeQuiz } from '@renderer/firebase/quiz/quiz'
 import Header from '../../components/Header/Header'
 import QuizzesCard from './components/QuizzesCard'
 import Quiz from '@renderer/models/Quiz'
@@ -51,6 +51,18 @@ const ConfigTeamRoomScreen: React.FC = () => {
     await logout()
     navigate('/')
     alert('Usuário Desconectado')
+  }
+
+  const handleDeleteQuiz = async (quizId: string): Promise<void> => {
+    console.log('HANDLE')
+    try {
+      await removeQuiz(currentUser!.uid, quizId)
+      setQuizzes(quizzes.filter((quiz) => quiz.id !== quizId))
+      alert('Quiz removido com sucesso!')
+    } catch (error) {
+      console.error('Erro ao remover o quiz:', error)
+      alert('Não foi possível remover o quiz. Tente novamente mais tarde.')
+    }
   }
 
   const handleCreateQuizSubmit = async (e: React.FormEvent): Promise<void> => {
@@ -133,6 +145,7 @@ const ConfigTeamRoomScreen: React.FC = () => {
                 quizzes: quiz.titulo,
                 answer: quiz.descricao
               }}
+              onDelete={() => handleDeleteQuiz(quiz.id)}
             />
           ))}
         </div>

@@ -11,20 +11,13 @@ import Mais from '../../assets/icon+.svg'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useAuth } from '@renderer/contexts/authContext'
 import { createSession } from '@renderer/firebase/session/session'
-
-export interface Team {
-  name: string
-  points: number
-  image: string
-}
+import Team from '@renderer/models/Team'
 
 const ConfigTeam: FC = () => {
   const { currentUser, logout } = useAuth()
   const { userId } = useAuth()
   const [profileName, setProfileName] = useState<string | null>(null)
   const { quizId } = useParams()
-
-  console.log(quizId)
 
   useEffect(() => {
     if (currentUser) {
@@ -33,11 +26,11 @@ const ConfigTeam: FC = () => {
   }, [currentUser])
 
   const defaultTeams: Team[] = [
-    { name: 'Equipe Folha', points: 0, image: folha },
-    { name: 'Equipe Água', points: 0, image: agua },
-    { name: 'Equipe Maçã', points: 0, image: maca },
-    { name: 'Equipe Gato', points: 0, image: gato },
-    { name: 'Equipe Cachorro', points: 0, image: cachorro }
+    { name: 'Equipe Folha', points: 0, image: folha, hasAnswered: false },
+    { name: 'Equipe Água', points: 0, image: agua, hasAnswered: false },
+    { name: 'Equipe Maçã', points: 0, image: maca, hasAnswered: false },
+    { name: 'Equipe Gato', points: 0, image: gato, hasAnswered: false },
+    { name: 'Equipe Cachorro', points: 0, image: cachorro, hasAnswered: false }
   ]
 
   const [teams, setTeams] = useState<Team[]>(defaultTeams)

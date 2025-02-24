@@ -49,7 +49,6 @@ export const listQuizzesByProfessor = async (professorId: string): Promise<Quiz[
     ...(doc.data() as Omit<Quiz, 'id'>)
   }))
 
-  console.log('Quizzes:', quizzes)
   return quizzes
 }
 
@@ -165,5 +164,29 @@ export const getQuestionFromQuiz = async (
   } catch (error) {
     console.error('Erro ao obter a pergunta do quiz:', error)
     throw new Error('Não foi possível obter a pergunta.')
+  }
+}
+
+export const getQuizById = async (professorId: string, quizId: string): Promise<Quiz | null> => {
+  try {
+    const quizRef = doc(db, 'professor', professorId, 'quiz', quizId)
+    const quizDoc = await getDoc(quizRef)
+
+    if (!quizDoc.exists()) {
+      throw new Error(`Quiz com ID '${quizId}' não encontrado.`)
+    }
+
+    const quizData = quizDoc.data()
+    if (!quizData) return null
+
+    return {
+      id: quizId,
+      perguntas: quizData.perguntas as Pergunta[],
+      titulo: quizData.titulo,
+      descricao: quizData.descricao
+    }
+  } catch (error) {
+    console.error('Erro ao obter o quiz:', error)
+    throw new Error('Não foi possível obter o quiz.')
   }
 }

@@ -20,8 +20,6 @@ const TeacherQuestionCreationScreen: React.FC = () => {
   }
 
   useEffect(() => {
-    console.log('Parâmetros recebidos:', { userId, quizId })
-
     if (!userId) {
       console.error('Erro: userId não está definido!')
       return
@@ -36,7 +34,6 @@ const TeacherQuestionCreationScreen: React.FC = () => {
       try {
         const questionsList = await listQuestionsFromQuiz(userId, quizId)
         setPerguntas(questionsList)
-        console.log('Perguntas:', questionsList)
       } catch (error) {
         console.error('Erro ao buscar perguntas:', error)
       }
@@ -58,8 +55,6 @@ const TeacherQuestionCreationScreen: React.FC = () => {
 
       // Atualiza o estado para refletir a remoção sem precisar recarregar a tela
       setPerguntas((prevPerguntas) => prevPerguntas.filter((p) => p.enunciado !== enunciado))
-
-      console.log('Pergunta removida com sucesso!')
     } catch (error) {
       console.error('Erro ao remover pergunta:', error)
     }
@@ -68,7 +63,7 @@ const TeacherQuestionCreationScreen: React.FC = () => {
   return (
     <div className="containerTeacherQuestionScreen">
       <header className="headerTeacherQuestionScreen">
-        <button className="backButtonQuestionScreen" onClick={() => navigate('/select-questions')}>
+        <button className="backButtonQuestionScreen" onClick={() => navigate('/config-team-room')}>
           <img src={backIcon} alt="icone voltar" className="backIcon" />
           VOLTAR
         </button>
@@ -115,7 +110,7 @@ const TeacherQuestionCreationScreen: React.FC = () => {
         </div>
       </main>
       <footer className="footerQuestionScreen">
-        <button className="buttonQuestionScreen" onClick={() => navigate('/config')}>
+        <button className="buttonQuestionScreen" onClick={() => navigate('/config-team-room')}>
           TUDO CERTO, CONTINUAR
         </button>
       </footer>

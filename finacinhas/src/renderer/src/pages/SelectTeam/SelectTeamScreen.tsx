@@ -1,17 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from '../../assets/Logo-Subtitle.svg'
 import './SelectTeamScreen.style.css'
 import { MdArrowBack } from 'react-icons/md'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
+import Team from '@renderer/models/Team'
+import { getTeamsByRoomCode } from '@renderer/firebase/session/session'
 
 const SelectTeamScreen: React.FC = () => {
   const navigate = useNavigate()
   const [selectedTeam, setSelectedTeam] = useState<string>('')
+  const [teams, setTeams] = useState<Team[]>([])
+  const { roomCode } = useParams()
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleContinueToQuiz = () => {
+  useEffect(() => {
+    const fetchTeams = async (): Promise<void> => {
+      try {
+        const teamsData = await getTeamsByRoomCode(roomCode!)
+        setTeams(teamsData)
+      } catch (error) {
+        console.error('Erro ao buscar times:', error)
+      }
+    }
+
+    fetchTeams()
+  }, [roomCode])
+
+  const handleContinueToQuiz = (): void => {
     if (selectedTeam) {
-      navigate(`/match-screen/${selectedTeam}`)
+      navigate(`/match-screen/${roomCode}/${selectedTeam}`)
     } else {
       alert('Por favor, selecione uma equipe antes de continuar.')
     }
@@ -35,23 +51,16 @@ const SelectTeamScreen: React.FC = () => {
           className="selectTeam"
           required
           value={selectedTeam}
-          onChange={(e) => setSelectedTeam(e.target.value)} // Atualiza o estado com o valor selecionado
+          onChange={(e) => setSelectedTeam(e.target.value)}
         >
           <option value="" className="optionTeamSelection">
             Selecionar Equipe
           </option>
-          <option value="maca" className="optionTeamSelection">
-            Equipe Maçã
-          </option>
-          <option value="agua" className="optionTeamSelection">
-            Equipe Água
-          </option>
-          <option value="folha" className="optionTeamSelection">
-            Equipe Folha
-          </option>
-          <option value="gato" className="optionTeamSelection">
-            Equipe Gato
-          </option>
+          {teams.map((team) => (
+            <option key={team.name} value={team.name} className="optionTeamSelection">
+              {team.name}
+            </option>
+          ))}
         </select>
         <button className="SelectTeamButton" onClick={handleContinueToQuiz}>
           CONTINUAR
